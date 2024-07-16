@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import cross from "../../assets/img/cross.png"; // Ajusta la ruta según tu estructura
+
 import { useGlobalContext } from '../../contexts/GlobalContext';
 
 
@@ -9,9 +9,11 @@ const Formulario = styled.div`
   flex-direction: column;
 `;
 
+const imageUrl = '/img/cross.png';
+
 const CloseButton = styled.button`
-  background: url(${cross}) no-repeat center center;
-  background-size: contain;
+  background: url(${imageUrl}) no-repeat center center;
+  background-size: contain; /* Ajusta el tamaño de la imagen de fondo */
   width: 30px;
   height: 30px;
   border: none;

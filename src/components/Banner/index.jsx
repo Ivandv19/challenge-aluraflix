@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import bannerImg from '../../assets/img/banner.png'; // Ruta relativa ajustada según tu estructura
 import { useGlobalContext } from '../../contexts/GlobalContext';
+
+const imageUrl = '/img/banner.png';
 
 const BannerStyled = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${bannerImg});
+  background-image: url(${imageUrl});
   background-size: cover;
   background-position: center;
   padding: 343px 10px 155px 10px;

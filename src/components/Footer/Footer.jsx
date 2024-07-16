@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import logo from '../../assets/img/LogoMain.png'; // Ruta relativa ajustada según tu estructura
 import hexToRgba from 'hex-to-rgba';
 
 const FooterStyles = styled.footer`
@@ -21,7 +20,7 @@ const Footer = () => {
     return (
         <>
             <FooterStyles>
-                <img src={logo} alt="Logo" />
+            <img src="/img/LogoMain.png" alt="logo main" />
             </FooterStyles>
 
         </>

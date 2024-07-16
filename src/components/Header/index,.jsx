@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Nav from "./Nav";
-import logo from "../../assets/img/LogoMain.png"; // Ajusta la ruta según tu estructura
+
 
 const HeaderStyled = styled.header`
   width: 100%;
@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <>
             <HeaderStyled>
-                <img src={logo} alt="Logo" />
+            <img src="/img/LogoMain.png" alt="Icon Delete" />
                 <Nav />
             </HeaderStyled>
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import iconDelete from '../../../assets/img/icon-delete.png'; // Ajusta la ruta según tu estructura
-import iconEdit from '../../../assets/img/icon-edit.png'; // Ajusta la ruta según tu estructura
+
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 
 
@@ -128,12 +127,12 @@ const Frontend = () => {
                         <DeleteyEdit>
                             <DyEContainer>
                                 <Delete onClick={() => handleDeleteClick(video.id)}>
-                                    <img src={iconDelete} alt="iconoBorrar" />
+                                <img src="/img/icon-delete.png" alt="Icon Delete" />
                                     <p>BORRAR</p>
                                 </Delete>
 
                                 <Edit onClick={() => handleEditClick()}>
-                                    <img src={iconEdit} alt="iconoEditar" />
+                                <img src="/img/icon-edit.png" alt="Icon edit" />
                                     <p>EDITAR</p>
                                 </Edit>
                             </DyEContainer>
