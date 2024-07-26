@@ -1,4 +1,1 @@
-
-[![wakatime](https://wakatime.com/badge/github/Ivanmx19/alura-flix.svg)](https://wakatime.com/badge/github/Ivanmx19/alura-flix)
-
-
+[![wakatime](https://wakatime.com/badge/user/c585b1da-c687-4d3b-89c1-72901e86fb52/project/15c31cea-e2b6-47ef-b7e0-e08e7b5d7420.svg)](https://wakatime.com/badge/user/c585b1da-c687-4d3b-89c1-72901e86fb52/project/15c31cea-e2b6-47ef-b7e0-e08e7b5d7420)
