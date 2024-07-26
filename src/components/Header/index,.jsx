@@ -14,6 +14,8 @@ const HeaderStyled = styled.header`
   border-bottom: 4px solid var(--Blue, rgba(34, 113, 209, 1));
   box-shadow: 0px 5px 29px 0px rgba(34, 113, 209, 0.9);
   font-family: 'SourceSansProRegular';
+  position: fixed;
+  top: 0;
 `;
 
 const Header = () => {
