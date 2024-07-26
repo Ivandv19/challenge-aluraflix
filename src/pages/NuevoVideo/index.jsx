@@ -5,7 +5,9 @@ import { useGlobalContext } from '../../contexts/GlobalContext';
 
 const NuevosVideosContainer = styled.div`
   background: rgba(25, 25, 25, 1);
-  padding: 120px 0 0 0;
+  padding: 120px 0 50px 0;
+  width: 100%;
+  height: auto;
 `;
 
 const TitulosContainer = styled.section`
@@ -16,7 +18,7 @@ const TitulosContainer = styled.section`
 const FormContainer = styled.form`
   width: 100%;
   height: auto;
-  padding: 20px;
+  padding: 20px 150px;
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -90,10 +92,14 @@ const Button = styled.button`
 `;
 
 const BlocksStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 30px;
+width: 100%;
+height: auto;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+
+
+
 `;
 
 const H1 = styled.h1`
@@ -126,6 +132,12 @@ const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const ButtonContainer = styled.div`
+display: flex;
+flex-direction: row;
+  gap: 30px;
+`
 
 const NuevoVideo = () => {
  
@@ -236,6 +248,8 @@ const NuevoVideo = () => {
           </BlocksStyled>
 
           <BlocksStyled>
+            <ButtonContainer>
+
             <Button type="submit">Guardar</Button>
             <Button type="button" onClick={() => {
               setTitulo('');
@@ -244,6 +258,9 @@ const NuevoVideo = () => {
               setVideoURL('');
               setDescripcion('');
             }}>Limpiar</Button>
+
+            </ButtonContainer>
+            
           </BlocksStyled>
         </FormContainer>
       </NuevosVideosContainer>
