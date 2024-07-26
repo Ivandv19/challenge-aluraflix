@@ -27,8 +27,8 @@ const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -37,15 +37,14 @@ const ModalWrapper = styled.div`
 
 const ModalContent = styled.div`
   background-color: rgba(3, 18, 47, 1);
-  padding: 20px;
   border-radius: 10px;
-  width: 60vw;
-  height: 97vh;
+  width: 70%;
+  height: 100%;
   border: 5px solid rgba(107, 209, 255, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 200px;
+  padding: 20px 200px;
   position: relative;
 `;
 
