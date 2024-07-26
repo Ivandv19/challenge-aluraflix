@@ -5,7 +5,7 @@ import { useGlobalContext } from '../../contexts/GlobalContext';
 
 const NuevosVideosContainer = styled.div`
   background: rgba(25, 25, 25, 1);
-  padding: 20px 200px;
+  padding: 120px 0 0 0;
 `;
 
 const TitulosContainer = styled.section`
