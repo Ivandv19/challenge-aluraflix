@@ -16,6 +16,7 @@ const CategoryStyled = styled.section`
 const CardsBackendStyled = styled.section`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
 `;

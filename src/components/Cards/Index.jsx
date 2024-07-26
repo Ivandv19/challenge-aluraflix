@@ -4,7 +4,7 @@ import Frontend from "./Frontend"
 import InnoyGest from "./InnoyGest"
 
 const CardsContainer = styled.section`
-padding: 25px 45px 100px 45px;
+padding: 25px 100px 100px 100px;
 display: flex;
 flex-direction: column;
 gap: 93px;
