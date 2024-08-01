@@ -24,7 +24,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para obtener la lista de videos desde el servidor
     const fetchVideos = async () => {
         try {
-            const response = await fetch('http://localhost:3000/Videos');
+            const response = await fetch('https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos');
             if (!response.ok) {
                 throw new Error('Error al obtener los videos');
             }
@@ -43,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para añadir un nuevo video
     const postVideo = async (newVideo) => {
         try {
-            const response = await fetch('http://localhost:3000/Videos', {
+            const response = await fetch('https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para editar un video existente
     const editVideo = async (id, updatedFields) => {
         try {
-            const response = await fetch(`http://localhost:3000/Videos/${id}`, {
+            const response = await fetch(`https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos/${id}`, {
                 method: 'PATCH', // Utilizando PATCH en lugar de PUT
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para eliminar un video
     const deleteVideo = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/Videos/${id}`, {
+            const response = await fetch(`https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
