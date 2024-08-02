@@ -14,8 +14,6 @@ export const GlobalProvider = ({ children }) => {
 
     }
 
-
-
     // Estado para controlar el modal
     const [useModal, setModal] = useState(false);
 
