@@ -92,10 +92,18 @@ const Edit = styled.div`
 
 const BackEnd = () => {
 
-  const { useVideos, openModal } = useGlobalContext();
+  const { useVideos, openModal, deleteVideo } = useGlobalContext();
 
   // Filtrar los videos por la categoría "BACK END"
   const backendVideos = useVideos.filter(video => video.Categoria === 'BACK END');
+
+  const handleDeleteClick = async (id) => {
+    try {
+      await deleteVideo(id); // Llama a la función deleteVideo con el id del video
+    } catch (error) {
+      console.error('Error deleting video:', error);
+    }
+  };
 
   return (
     <BackendContainer>
@@ -110,12 +118,12 @@ const BackEnd = () => {
             </VideoCard>
             <DeleteyEdit>
               <DyEContainer>
-                <Delete>
-                <img src="/img/icon-delete.png" alt="Icon Delete" />
+                <Delete onClick={() => handleDeleteClick(video.id)}>
+                  <img src="/img/icon-delete.png" alt="Icon Delete" />
                   <p>BORRAR</p>
                 </Delete>
                 <Edit onClick={openModal}>
-                <img src="/img/icon-edit.png" alt="Icon edit" />
+                  <img src="/img/icon-edit.png" alt="Icon edit" />
                   <p>EDITAR</p>
                 </Edit>
               </DyEContainer>
