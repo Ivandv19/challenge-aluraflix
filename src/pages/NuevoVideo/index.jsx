@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
 import styled from 'styled-components';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import { useState } from 'react';
 
 
 const NuevosVideosContainer = styled.div`
@@ -139,8 +140,7 @@ flex-direction: row;
   gap: 30px;
 `
 
-const NuevoVideo = () => {
- 
+function NuevoVideo(){
   const { postVideo } = useGlobalContext();
   const [titulo, setTitulo] = useState('');
   const [categoria, setCategoria] = useState('frontend');
@@ -266,6 +266,6 @@ const NuevoVideo = () => {
       </NuevosVideosContainer>
     </>
   );
-};
+}
 
 export default NuevoVideo;

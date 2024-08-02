@@ -1,6 +1,9 @@
-import React from "react";
+
 import styled from "styled-components";
 import Nav from "./Nav";
+
+
+
 
 
 const HeaderStyled = styled.header`
@@ -23,9 +26,8 @@ const Header = () => {
         <>
             <HeaderStyled>
             <img src="/img/LogoMain.png" alt="Icon Delete" />
-                <Nav />
+                <Nav/>
             </HeaderStyled>
-
 
         </>
 

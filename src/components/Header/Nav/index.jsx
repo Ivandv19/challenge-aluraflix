@@ -1,7 +1,7 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 import hexToRgba from 'hex-to-rgba';
+import { Link } from 'react-router-dom';
 
 const NavStyled = styled.nav`
   display: flex;
@@ -25,24 +25,17 @@ const Boton = styled.button`
 `;
 
 const Nav = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
 
   return (
     <NavStyled>
-      <Boton
-        selected={location.pathname === '/'}
-        onClick={() => navigate('/')}
-      >
-        HOME
-      </Boton>
-      <Boton
-        selected={location.pathname === '/nuevovideo'}
-        onClick={() => navigate('/nuevovideo')}
-      >
-        NUEVO VIDEO
-      </Boton>
+      <Link to="/">
+        <Boton> HOME </Boton>
+      </Link>
+      <Link to="/nuevovideo">
+        <Boton> NUEVO VIDEO </Boton>
+      </Link>
     </NavStyled>
+
   );
 }
 
