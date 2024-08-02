@@ -93,18 +93,11 @@ const Edit = styled.div`
 
 const BackEnd = () => {
 
-  const { useVideos, openModal, deleteVideo } = useGlobalContext();
+  const { useVideos, openModal, handleDeleteClick} = useGlobalContext();
 
   // Filtrar los videos por la categoría "BACK END"
   const backendVideos = useVideos.filter(video => video.Categoria === 'BACK END');
 
-  const handleDeleteClick = async (id) => {
-    try {
-      await deleteVideo(id); // Llama a la función deleteVideo con el id del video
-    } catch (error) {
-      console.error('Error deleting video:', error);
-    }
-  };
 
   return (
     <BackendContainer>

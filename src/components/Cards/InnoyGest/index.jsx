@@ -93,18 +93,10 @@ const Edit = styled.div`
 
 const InnoyGest = () => {
 
-  const { useVideos, openModal, deleteVideo } = useGlobalContext();
+  const { useVideos, openModal, handleDeleteClick } = useGlobalContext();
 
   // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN"
   const iygVideos = useVideos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
-
-  const handleDeleteClick = async (id) => {
-    try {
-      await deleteVideo(id); // Llama a la función deleteVideo con el id del video
-    } catch (error) {
-      console.error('Error deleting video:', error);
-    }
-  };
 
   return (
     <FrontendContainer>

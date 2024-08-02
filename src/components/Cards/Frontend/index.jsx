@@ -97,19 +97,11 @@ const Edit = styled.button`
 `;
 
 const Frontend = () => {
-    const { useVideos, openModal, deleteVideo } = useGlobalContext();
+    const { useVideos, openModal, handleDeleteClick } = useGlobalContext();
     const frontendVideos = useVideos.filter(video => video.Categoria === 'FRONT END');
 
     const handleEditClick = () => {
         openModal(); // Abre el modal y pasa el video como argumento
-    };
-
-    const handleDeleteClick = async (id) => {
-        try {
-            await deleteVideo(id); // Llama a la función deleteVideo con el id del video
-        } catch (error) {
-            console.error('Error deleting video:', error);
-        }
     };
 
     return (

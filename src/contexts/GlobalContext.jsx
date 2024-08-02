@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 // Creamos el contexto global
 const GlobalContext = createContext();
@@ -14,11 +14,14 @@ export const GlobalProvider = ({ children }) => {
 
     }
 
-    // Estado para controlar el modal
-    const [useModal, setModal] = useState(false);
-
+    //TODO 
     // Estado para almacenar la lista de videos
     const [useVideos, setVideos] = useState([]);
+
+
+
+    // Estado para controlar el modal
+    const [useModal, setModal] = useState(false);
 
     // Función para abrir el modal
     const openModal = () => {
@@ -109,9 +112,17 @@ export const GlobalProvider = ({ children }) => {
         }
     };
 
+    const handleDeleteClick = async (id) => {
+        try {
+            await deleteVideo(id); // Llama a la función deleteVideo con el id del video
+        } catch (error) {
+            console.error('Error deleting video:', error);
+        }
+    };
+
     // Proporcionamos el contexto global a los componentes hijos
     return (
-        <GlobalContext.Provider value={{ useModal, openModal, closeModal, useVideos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick }}>
+        <GlobalContext.Provider value={{ useModal, openModal, closeModal, useVideos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick, handleDeleteClick }}>
             {children}
         </GlobalContext.Provider>
     );
