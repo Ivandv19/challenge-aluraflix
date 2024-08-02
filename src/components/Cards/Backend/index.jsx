@@ -74,6 +74,7 @@ const Delete = styled.div`
   font-weight: 800;
   font-size: 16px;
   line-height: 18.75px;
+  cursor: pointer;
 `;
 
 const Edit = styled.div`
