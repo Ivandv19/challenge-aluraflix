@@ -46,6 +46,7 @@ const InputField = styled.input`
   border-radius: 10px;
   background: rgba(25, 25, 25, 1);
   border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
+  color: white;
 `;
 
 const SelectField = styled.select`
