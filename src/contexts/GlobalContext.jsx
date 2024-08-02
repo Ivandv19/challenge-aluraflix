@@ -5,6 +5,17 @@ const GlobalContext = createContext();
 
 // Definimos el proveedor global
 export const GlobalProvider = ({ children }) => {
+
+    //estado para controlar la seleccion de  los botones
+    const [botonSeleccionado, setBotonSeleccionado] = useState('home');
+
+    const handleButtonClick = (buttonName) => {
+        setBotonSeleccionado(buttonName);
+
+    }
+
+
+
     // Estado para controlar el modal
     const [useModal, setModal] = useState(false);
 
@@ -102,7 +113,7 @@ export const GlobalProvider = ({ children }) => {
 
     // Proporcionamos el contexto global a los componentes hijos
     return (
-        <GlobalContext.Provider value={{ useModal, openModal, closeModal, useVideos, postVideo, editVideo, deleteVideo }}>
+        <GlobalContext.Provider value={{ useModal, openModal, closeModal, useVideos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick }}>
             {children}
         </GlobalContext.Provider>
     );

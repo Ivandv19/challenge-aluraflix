@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import hexToRgba from 'hex-to-rgba';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 
 const NavStyled = styled.nav`
   display: flex;
@@ -26,15 +27,19 @@ const Boton = styled.button`
 
 const Nav = () => {
 
+  const { botonSeleccionado, handleButtonClick } = useGlobalContext();
+
   return (
+
     <NavStyled>
-      <Link to="/">
-        <Boton> HOME </Boton>
+      <Link to="/" onClick={() => handleButtonClick('home')}>
+        <Boton selected={botonSeleccionado === 'home'}> HOME </Boton>
       </Link>
-      <Link to="/nuevovideo">
-        <Boton> NUEVO VIDEO </Boton>
+      <Link to="/nuevovideo" onClick={() => handleButtonClick('nuevovideo')}>
+        <Boton selected={botonSeleccionado === 'nuevovideo'}> NUEVO VIDEO </Boton>
       </Link>
-    </NavStyled>
+    </NavStyled >
+
 
   );
 }
