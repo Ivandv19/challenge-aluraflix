@@ -6,32 +6,9 @@ const GlobalContext = createContext();
 // Definimos el proveedor global
 export const GlobalProvider = ({ children }) => {
 
-    //estado para controlar la seleccion de  los botones
-    const [botonSeleccionado, setBotonSeleccionado] = useState('home');
-
-    const handleButtonClick = (buttonName) => {
-        setBotonSeleccionado(buttonName);
-
-    }
-
     //TODO 
     // Estado para almacenar la lista de videos
     const [useVideos, setVideos] = useState([]);
-
-
-
-    // Estado para controlar el modal
-    const [useModal, setModal] = useState(false);
-
-    // Función para abrir el modal
-    const openModal = () => {
-        setModal(true);
-    };
-
-    // Función para cerrar el modal
-    const closeModal = () => {
-        setModal(false);
-    };
 
     // Función para obtener la lista de videos desde el servidor
     const fetchVideos = async () => {
@@ -51,6 +28,29 @@ export const GlobalProvider = ({ children }) => {
     useEffect(() => {
         fetchVideos();
     }, []);
+
+
+    //estado para controlar la seleccion de  los botones
+    const [botonSeleccionado, setBotonSeleccionado] = useState('home');
+
+    const handleButtonClick = (buttonName) => {
+        setBotonSeleccionado(buttonName);
+    }
+
+
+    // Estado para controlar el modal
+    const [useModal, setModal] = useState(false);
+
+    // Función para abrir el modal
+    const openModal = () => {
+        setModal(true);
+    };
+
+    // Función para cerrar el modal
+    const closeModal = () => {
+        setModal(false);
+    };
+
 
     // Función para añadir un nuevo video
     const postVideo = async (newVideo) => {
@@ -111,7 +111,7 @@ export const GlobalProvider = ({ children }) => {
             console.error('Error deleting video:', error);
         }
     };
-
+    //Función para eliminar un video
     const handleDeleteClick = async (id) => {
         try {
             await deleteVideo(id); // Llama a la función deleteVideo con el id del video
