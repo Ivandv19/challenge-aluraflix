@@ -1,15 +1,14 @@
 
 import styled from "styled-components";
 import Nav from "./Nav";
+import { useGlobalContext } from "../../contexts/GlobalContext";
 
 
-
-
-
+// Componente estilizado para el Header
 const HeaderStyled = styled.header`
   width: 100%;
   height: auto;
-  background-color: rgba(38, 38, 38, 1);
+  background-color: ${(props) => (props.selected ? 'rgba(38, 38, 38, 1)' : '#000000')};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,15 +21,13 @@ const HeaderStyled = styled.header`
 `;
 
 const Header = () => {
+    const { botonSeleccionado } = useGlobalContext();
+    
     return (
-        <>
-            <HeaderStyled>
-            <img src="/img/LogoMain.png" alt="Icon Delete" />
-                <Nav/>
-            </HeaderStyled>
-
-        </>
-
+        <HeaderStyled selected={botonSeleccionado === 'HOME'}>
+            <img src="/img/LogoMain.png" alt="logo" />
+            <Nav />
+        </HeaderStyled>
     );
 };
 
