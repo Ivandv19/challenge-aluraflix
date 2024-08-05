@@ -49,16 +49,9 @@ export const GlobalProvider = ({ children }) => {
     // Función para cerrar el modal
     const closeModal = () => {
         setModal(false);
+        setVideoSeleccionado(null); // Restablece el estado del video seleccionado
+        setVideoAEditar({}); // Restablece el estado del video a editar
     };
-
-    useEffect(() => {
-        if (Modal !== true) {
-            closeModal();
-        }
-    }, [Modal]);
-
-
-
 
     // Función para añadir un nuevo video
     const postVideo = async (newVideo) => {
