@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import BotonDelete from '../BotonDelete';
+import BotonEdit from '../BotonEdit';
 
 
 const FrontendContainer = styled.section`
@@ -67,24 +68,10 @@ const DeleteyEdit = styled.div`
 
 
 
-const Edit = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 18.75px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
+
 
 const Frontend = () => {
-  const { videos, openModal} = useGlobalContext();
+  const { videos, openModal } = useGlobalContext();
   const frontendVideos = videos.filter(video => video.Categoria === 'FRONT END');
 
   return (
@@ -102,10 +89,7 @@ const Frontend = () => {
             <DeleteyEdit>
               <DyEContainer>
                 <BotonDelete idVideo={video.id} />
-                <Edit onClick={openModal}>
-                  <img src="/img/icon-edit.png" alt="Icon edit" />
-                  <p>EDITAR</p>
-                </Edit>
+                <BotonEdit onClick={openModal} />
               </DyEContainer>
             </DeleteyEdit>
           </CardStyled>

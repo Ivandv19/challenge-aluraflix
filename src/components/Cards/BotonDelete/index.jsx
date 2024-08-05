@@ -19,7 +19,7 @@ const Delete = styled.button`
   cursor: pointer;
 `;
 
-const BotonDelete = ({idVideo}) => {
+const BotonDelete = ({ idVideo }) => {
 
     const { handleDeleteClick } = useGlobalContext();
 
