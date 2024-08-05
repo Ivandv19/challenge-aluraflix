@@ -13,7 +13,7 @@ Aluraflix es una aplicación web diseñada para gestionar y explorar una colecci
 ## Uso
 
 1. **Visualización del Proyecto:** Instala el repositorio de manera local o visita el enlace desplegado en [Vercel](https://alura-flix-flax.vercel.app/).
-2. **Explora los Videos**: Navega a través de la galería de videos filtrados por categoría "FRONT END".
+2. **Explora los Videos**: Navega a través de la galería de videos filtrados por categoría ** Front End, Back End y Innovación y Gestión**.
 3. **Eliminar Videos**: Usa el botón de eliminar en cada video para removerlo de la lista.
 4. **Editar Videos**: Haz clic en el ícono de editar para abrir un modal y modificar los detalles del video.
 5. **Crear Videos**: Accede a la página de creación de videos desde el menú de navegación para añadir nuevos videos con la información requerida.
