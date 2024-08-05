@@ -39,7 +39,7 @@ export const GlobalProvider = ({ children }) => {
 
 
     // Estado para controlar el modal
-    const [useModal, setModal] = useState(false);
+    const [Modal, setModal] = useState(false);
 
     // Función para abrir el modal
     const openModal = () => {
@@ -51,7 +51,13 @@ export const GlobalProvider = ({ children }) => {
         setModal(false);
     };
 
-   
+    useEffect(() => {
+        if (Modal !== true) {
+            closeModal();
+        }
+    }, [Modal]);
+
+
 
 
     // Función para añadir un nuevo video
@@ -79,26 +85,52 @@ export const GlobalProvider = ({ children }) => {
     const editVideo = async (id, updatedFields) => {
         try {
             const response = await fetch(`https://my-json-server.typicode.com/IvandevI9/api_info_aluraflix/Videos/${id}`, {
-                method: 'PATCH', // Utilizando PATCH en lugar de PUT
+                method: 'PATCH', // Utilizando PATCH para actualizaciones parciales
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(updatedFields),
             });
+
             if (!response.ok) {
-                throw new Error('Error al editar el video');
+                throw new Error(`Error al editar el video: ${response.statusText}`);
             }
+
             const data = await response.json();
-            console.log('Video edited successfully:', data);
-            const updatedVideos = videos.map(video => (video.id === id ? data : video));
-            setVideos(updatedVideos);
+            console.log('Video editado correctamente:', data);
+
+            // Actualizar el estado de videos
+            setVideos(prevVideos =>
+                prevVideos.map(video => (video.id === id ? data : video))
+            );
         } catch (error) {
-            console.error('Error editing video:', error);
+            console.error('Error al editar el video:', error);
+            // Puedes lanzar el error si es necesario para manejarlo en otros lugares
             throw error;
         }
     };
 
-    
+    const [videoSeleccionado, setVideoSeleccionado] = useState(null);
+    const [videoAEditar, setVideoAEditar] = useState({});
+
+    const handleVideoSelec = async (id) => {
+        setVideoSeleccionado(id);
+
+    };
+
+    // Usa useEffect para verificar el valor actualizado del estado
+    useEffect(() => {
+        if (videoSeleccionado !== null) {
+            // Filtra el video seleccionado basándote en el ID
+            const videoSelec = videos.find(video => video.id === videoSeleccionado) || {};
+            console.log('ID recibido en el modal:', videoSeleccionado);
+            setVideoAEditar(videoSelec);
+            openModal();
+
+
+        }
+    }, [videoSeleccionado]);
+
 
     // Función para eliminar un video
     const deleteVideo = async (id) => {
@@ -118,7 +150,7 @@ export const GlobalProvider = ({ children }) => {
     //Función para eliminar un video
     const handleDeleteClick = async (id) => {
         console.log('ID recibido en el contexto:', id); // Verifica el valor aquí
-        
+
         try {
             await deleteVideo(id); // Llama a la función deleteVideo con el id del video
         } catch (error) {
@@ -128,7 +160,7 @@ export const GlobalProvider = ({ children }) => {
 
     // Proporcionamos el contexto global a los componentes hijos
     return (
-        <GlobalContext.Provider value={{ useModal, openModal, closeModal, videos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick, handleDeleteClick }}>
+        <GlobalContext.Provider value={{ Modal, openModal, closeModal, videos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick, handleDeleteClick, handleVideoSelec, videoSeleccionado, videoAEditar }}>
             {children}
         </GlobalContext.Provider>
     );

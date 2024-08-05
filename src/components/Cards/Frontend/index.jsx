@@ -71,7 +71,7 @@ const DeleteyEdit = styled.div`
 
 
 const Frontend = () => {
-  const { videos, openModal } = useGlobalContext();
+  const { videos } = useGlobalContext();
   const frontendVideos = videos.filter(video => video.Categoria === 'FRONT END');
 
   return (
@@ -89,7 +89,7 @@ const Frontend = () => {
             <DeleteyEdit>
               <DyEContainer>
                 <BotonDelete idVideo={video.id} />
-                <BotonEdit onClick={openModal} />
+                <BotonEdit idVideo={video.id} />
               </DyEContainer>
             </DeleteyEdit>
           </CardStyled>

@@ -157,11 +157,42 @@ const ButtonStyled = styled.button`
 
 const Modal = () => {
 
-  const { useModal, closeModal } = useGlobalContext();
+  const { Modal, closeModal, videoAEditar, editVideo } = useGlobalContext();
+
+  // Estado local para los inputs
+  const [title, setTitle] = useState(videoAEditar.Titulo || '');
+  const [category, setCategory] = useState(videoAEditar.Categoria || 'FRONT END');
+  const [image, setImage] = useState(videoAEditar.ImagenURL || '');
+  const [video, setVideo] = useState(videoAEditar.VideoURL || '');
+  const [description, setDescription] = useState(videoAEditar.Descripcion || '');
+
+  useEffect(() => {
+    // Actualizar el estado cuando cambie el video a editar
+    setTitle(videoAEditar.Titulo || '');
+    setCategory(videoAEditar.Categoria || 'FRONT END');
+    setImage(videoAEditar.ImagenURL || '');
+    setVideo(videoAEditar.VideoURL || '');
+    setDescription(videoAEditar.Descripcion || '');
+  }, [videoAEditar]);
 
   const handleSave = async () => {
+    // Validación de campos
+    if (!title || !image || !video) {
+      alert('Por favor, completa todos los campos obligatorios.');
+      return;
+    }
+    
     // Lógica para guardar el formulario
     try {
+      const updatedVideo = {
+        Titulo: title,
+        Categoria: category,
+        ImagenURL: image,
+        VideoURL: video,
+        Descripcion: description
+      };
+      // Llama a la función para guardar los cambios en la base de datos
+      await editVideo(videoAEditar.id, updatedVideo);
       closeModal();
     } catch (error) {
       console.error('Error al guardar el formulario:', error);
@@ -171,7 +202,7 @@ const Modal = () => {
 
   return (
     <>
-      {useModal && (
+      {Modal && (
         <ModalWrapper>
           <ModalContent>
             <CloseButton aria-label="Close" onClick={closeModal}>&times;</CloseButton>
@@ -188,13 +219,17 @@ const Modal = () => {
                     id="title"
                     name="title"
                     placeholder="Ingresa Título"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
 
                   <LabelStyled htmlFor="category">Categoría</LabelStyled>
                   <SelectStyled
                     id="category"
                     name="category"
-                    defaultValue="FRONT END"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+
                   >
                     <option value="FRONT END">Front End</option>
                     <option value="BACK END">Back End</option>
@@ -207,6 +242,8 @@ const Modal = () => {
                     id="image"
                     name="image"
                     placeholder="Ingresa Imagen"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
                   />
 
                   <LabelStyled htmlFor="video">Video</LabelStyled>
@@ -215,6 +252,8 @@ const Modal = () => {
                     id="video"
                     name="video"
                     placeholder="Ingresa Video"
+                    value={video}
+                    onChange={(e) => setVideo(e.target.value)}
                   />
 
                   <LabelStyled htmlFor="description">Descripción</LabelStyled>
@@ -222,6 +261,8 @@ const Modal = () => {
                     id="description"
                     name="description"
                     placeholder="Ingresa Descripción"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   />
                 </SectionStyled>
 

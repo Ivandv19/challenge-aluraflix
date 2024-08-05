@@ -17,11 +17,12 @@ const Edit = styled.div`
   cursor: pointer;
 `;
 
-const BotonEdit = () => {
+const BotonEdit = ({idVideo}) => {
 
-    const { openModal } = useGlobalContext();
+    const { handleVideoSelec } = useGlobalContext();
+
     return (
-        <Edit onClick={openModal} >
+        <Edit onClick={() => handleVideoSelec(idVideo)} >
             <img src="/img/icon-edit.png" alt="Icon edit" />
             <p>EDITAR</p>
         </Edit>

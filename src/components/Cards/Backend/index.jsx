@@ -90,7 +90,7 @@ const BackEnd = () => {
             <DeleteyEdit>
               <DyEContainer>
                 <BotonDelete idVideo={video.id} />
-                <BotonEdit />
+                <BotonEdit idVideo={video.id} />
               </DyEContainer>
             </DeleteyEdit>
           </CardStyled>

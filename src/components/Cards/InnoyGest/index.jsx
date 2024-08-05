@@ -68,7 +68,7 @@ const DeleteyEdit = styled.div`
 
 const InnoyGest = () => {
 
-  const { videos, openModal } = useGlobalContext();
+  const { videos } = useGlobalContext();
 
   // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN"
   const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
@@ -87,7 +87,7 @@ const InnoyGest = () => {
             <DeleteyEdit>
               <DyEContainer>
                 <BotonDelete idVideo={video.id} />
-                <BotonEdit onClick={openModal} />
+                <BotonEdit idVideo={video.id} />
               </DyEContainer>
             </DeleteyEdit>
           </CardStyled>
