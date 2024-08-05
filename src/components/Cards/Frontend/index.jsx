@@ -1,7 +1,8 @@
-import React from 'react';
+
 import styled from 'styled-components';
 
 import { useGlobalContext } from '../../../contexts/GlobalContext';
+import BotonDelete from '../BotonDelete';
 
 
 const FrontendContainer = styled.section`
@@ -64,21 +65,7 @@ const DeleteyEdit = styled.div`
   justify-content: center;
 `;
 
-const Delete = styled.button`
-display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 18.75px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
+
 
 const Edit = styled.button`
   display: flex;
@@ -97,42 +84,35 @@ const Edit = styled.button`
 `;
 
 const Frontend = () => {
-    const { videos, openModal, handleDeleteClick,} = useGlobalContext();
-    const frontendVideos = videos.filter(video => video.Categoria === 'FRONT END');
+  const { videos, openModal} = useGlobalContext();
+  const frontendVideos = videos.filter(video => video.Categoria === 'FRONT END');
 
-    
+  return (
+    <FrontendContainer>
+      <CategoryStyled>
+        <ButtonStyled>FRONT END</ButtonStyled>
+      </CategoryStyled>
 
-    return (
-        <FrontendContainer>
-            <CategoryStyled>
-                <ButtonStyled>FRONT END</ButtonStyled>
-            </CategoryStyled>
-
-            <CardsFrontendStyled>
-                {frontendVideos.map((video) => (
-                    <CardStyled key={video.id}>
-                        <VideoCard>
-                            <img src={video.ImagenURL} alt={`imgcard-${video.id}`} />
-                        </VideoCard>
-
-                        <DeleteyEdit>
-                            <DyEContainer>
-                                <Delete onClick={() => handleDeleteClick(video.id)}>
-                                <img src="/img/icon-delete.png" alt="Icon Delete" />
-                                    <p>BORRAR</p>
-                                </Delete>
-
-                                <Edit onClick={openModal}>
-                                <img src="/img/icon-edit.png" alt="Icon edit" />
-                                    <p>EDITAR</p>
-                                </Edit>
-                            </DyEContainer>
-                        </DeleteyEdit>
-                    </CardStyled>
-                ))}
-            </CardsFrontendStyled>
-        </FrontendContainer>
-    );
+      <CardsFrontendStyled>
+        {frontendVideos.map((video) => (
+          <CardStyled key={video.id}>
+            <VideoCard>
+              <img src={video.ImagenURL} alt={`imgcard-${video.id}`} />
+            </VideoCard>
+            <DeleteyEdit>
+              <DyEContainer>
+                <BotonDelete idVideo={video.id} />
+                <Edit onClick={openModal}>
+                  <img src="/img/icon-edit.png" alt="Icon edit" />
+                  <p>EDITAR</p>
+                </Edit>
+              </DyEContainer>
+            </DeleteyEdit>
+          </CardStyled>
+        ))}
+      </CardsFrontendStyled>
+    </FrontendContainer>
+  );
 };
 
 export default Frontend;

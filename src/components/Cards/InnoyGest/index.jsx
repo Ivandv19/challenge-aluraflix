@@ -1,6 +1,7 @@
-import React from 'react';
+
 import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
+import BotonDelete from '../BotonDelete';
 
 
 const FrontendContainer = styled.section`
@@ -63,20 +64,6 @@ const DeleteyEdit = styled.div`
   justify-content: center;
 `;
 
-const Delete = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 18.75px;
-  cursor: pointer;
-`;
-
 const Edit = styled.div`
   display: flex;
   flex-direction: row;
@@ -93,7 +80,7 @@ const Edit = styled.div`
 
 const InnoyGest = () => {
 
-  const { videos, openModal, handleDeleteClick } = useGlobalContext();
+  const { videos, openModal} = useGlobalContext();
 
   // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN"
   const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
@@ -111,10 +98,7 @@ const InnoyGest = () => {
             </VideoCard>
             <DeleteyEdit>
               <DyEContainer>
-                <Delete onClick={() => handleDeleteClick(video.id)}>
-                  <img src="/img/icon-delete.png" alt="Icon Delete" />
-                  <p>BORRAR</p>
-                </Delete>
+                <BotonDelete idVideo={video.id} />
                 <Edit onClick={openModal}>
                   <img src="/img/icon-edit.png" alt="Icon edit" />
                   <p>EDITAR</p>

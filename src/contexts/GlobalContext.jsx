@@ -13,7 +13,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para obtener la lista de videos desde el servidor
     const fetchVideos = async () => {
         try {
-            const response = await fetch('https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos');
+            const response = await fetch('https://my-json-server.typicode.com/IvandevI9/api_info_aluraflix/Videos');
             if (!response.ok) {
                 throw new Error('Error al obtener los videos');
             }
@@ -57,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para añadir un nuevo video
     const postVideo = async (newVideo) => {
         try {
-            const response = await fetch('https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos', {
+            const response = await fetch('https://my-json-server.typicode.com/IvandevI9/api_info_aluraflix/Videos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para editar un video existente
     const editVideo = async (id, updatedFields) => {
         try {
-            const response = await fetch(`https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos/${id}`, {
+            const response = await fetch(`https://my-json-server.typicode.com/IvandevI9/api_info_aluraflix/Videos/${id}`, {
                 method: 'PATCH', // Utilizando PATCH en lugar de PUT
                 headers: {
                     'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para eliminar un video
     const deleteVideo = async (id) => {
         try {
-            const response = await fetch(`https://my-json-server.typicode.com/fluxdev19/api_info_aluraflix/Videos/${id}`, {
+            const response = await fetch(`https://my-json-server.typicode.com/IvandevI9/api_info_aluraflix/Videos/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -117,6 +117,8 @@ export const GlobalProvider = ({ children }) => {
     };
     //Función para eliminar un video
     const handleDeleteClick = async (id) => {
+        console.log('ID recibido en el contexto:', id); // Verifica el valor aquí
+        
         try {
             await deleteVideo(id); // Llama a la función deleteVideo con el id del video
         } catch (error) {

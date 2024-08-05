@@ -1,7 +1,8 @@
-import React from 'react';
+
 import styled from 'styled-components';
 
 import { useGlobalContext } from '../../../contexts/GlobalContext';
+import BotonDelete from '../BotonDelete';
 
 const BackendContainer = styled.section`
   display: flex;
@@ -63,19 +64,6 @@ const DeleteyEdit = styled.div`
   justify-content: center;
 `;
 
-const Delete = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 18.75px;
-  cursor: pointer;
-`;
 
 const Edit = styled.div`
   display: flex;
@@ -93,7 +81,7 @@ const Edit = styled.div`
 
 const BackEnd = () => {
 
-  const { videos, openModal, handleDeleteClick} = useGlobalContext();
+  const { videos, openModal} = useGlobalContext();
 
   // Filtrar los videos por la categoría "BACK END"
   const backendVideos = videos.filter(video => video.Categoria === 'BACK END');
@@ -112,10 +100,7 @@ const BackEnd = () => {
             </VideoCard>
             <DeleteyEdit>
               <DyEContainer>
-                <Delete onClick={() => handleDeleteClick(video.id)}>
-                  <img src="/img/icon-delete.png" alt="Icon Delete" />
-                  <p>BORRAR</p>
-                </Delete>
+              <BotonDelete idVideo={video.id} />
                 <Edit onClick={openModal}>
                   <img src="/img/icon-edit.png" alt="Icon edit" />
                   <p>EDITAR</p>
