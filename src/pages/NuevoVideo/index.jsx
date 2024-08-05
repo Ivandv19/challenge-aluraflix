@@ -148,9 +148,16 @@ function NuevoVideo(){
   const [imagenURL, setImagenURL] = useState('');
   const [videoURL, setVideoURL] = useState('');
   const [descripcion, setDescripcion] = useState('');
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validación de campos
+    if (!titulo || !imagenURL || !videoURL || !descripcion) {
+      alert('Por favor, completa todos los campos obligatorios.');
+      return;
+    }
 
     const newVideo = {
       Titulo: titulo,
