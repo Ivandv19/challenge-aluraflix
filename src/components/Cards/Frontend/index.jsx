@@ -97,12 +97,10 @@ const Edit = styled.button`
 `;
 
 const Frontend = () => {
-    const { useVideos, openModal, handleDeleteClick } = useGlobalContext();
-    const frontendVideos = useVideos.filter(video => video.Categoria === 'FRONT END');
+    const { videos, openModal, handleDeleteClick,} = useGlobalContext();
+    const frontendVideos = videos.filter(video => video.Categoria === 'FRONT END');
 
-    const handleEditClick = () => {
-        openModal(); // Abre el modal y pasa el video como argumento
-    };
+    
 
     return (
         <FrontendContainer>
@@ -124,7 +122,7 @@ const Frontend = () => {
                                     <p>BORRAR</p>
                                 </Delete>
 
-                                <Edit onClick={() => handleEditClick()}>
+                                <Edit onClick={openModal}>
                                 <img src="/img/icon-edit.png" alt="Icon edit" />
                                     <p>EDITAR</p>
                                 </Edit>

@@ -93,10 +93,10 @@ const Edit = styled.div`
 
 const InnoyGest = () => {
 
-  const { useVideos, openModal, handleDeleteClick } = useGlobalContext();
+  const { videos, openModal, handleDeleteClick } = useGlobalContext();
 
   // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN"
-  const iygVideos = useVideos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
+  const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
 
   return (
     <FrontendContainer>

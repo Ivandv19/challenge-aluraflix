@@ -93,10 +93,10 @@ const Edit = styled.div`
 
 const BackEnd = () => {
 
-  const { useVideos, openModal, handleDeleteClick} = useGlobalContext();
+  const { videos, openModal, handleDeleteClick} = useGlobalContext();
 
   // Filtrar los videos por la categoría "BACK END"
-  const backendVideos = useVideos.filter(video => video.Categoria === 'BACK END');
+  const backendVideos = videos.filter(video => video.Categoria === 'BACK END');
 
 
   return (

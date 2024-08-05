@@ -8,7 +8,7 @@ export const GlobalProvider = ({ children }) => {
 
     //TODO 
     // Estado para almacenar la lista de videos
-    const [useVideos, setVideos] = useState([]);
+    const [videos, setVideos] = useState([]);
 
     // Función para obtener la lista de videos desde el servidor
     const fetchVideos = async () => {
@@ -51,6 +51,8 @@ export const GlobalProvider = ({ children }) => {
         setModal(false);
     };
 
+   
+
 
     // Función para añadir un nuevo video
     const postVideo = async (newVideo) => {
@@ -67,7 +69,7 @@ export const GlobalProvider = ({ children }) => {
             }
             const data = await response.json();
             console.log('Video added successfully:', data);
-            setVideos([...useVideos, data]);
+            setVideos([...videos, data]);
         } catch (error) {
             console.error('Error adding video:', error);
         }
@@ -88,13 +90,15 @@ export const GlobalProvider = ({ children }) => {
             }
             const data = await response.json();
             console.log('Video edited successfully:', data);
-            const updatedVideos = useVideos.map(video => (video.id === id ? data : video));
+            const updatedVideos = videos.map(video => (video.id === id ? data : video));
             setVideos(updatedVideos);
         } catch (error) {
             console.error('Error editing video:', error);
             throw error;
         }
     };
+
+    
 
     // Función para eliminar un video
     const deleteVideo = async (id) => {
@@ -106,7 +110,7 @@ export const GlobalProvider = ({ children }) => {
                 throw new Error('Error al eliminar el video');
             }
             // Actualizamos la lista de videos eliminando el video con el id especificado
-            setVideos(useVideos.filter(video => video.id !== id));
+            setVideos(videos.filter(video => video.id !== id));
         } catch (error) {
             console.error('Error deleting video:', error);
         }
@@ -122,7 +126,7 @@ export const GlobalProvider = ({ children }) => {
 
     // Proporcionamos el contexto global a los componentes hijos
     return (
-        <GlobalContext.Provider value={{ useModal, openModal, closeModal, useVideos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick, handleDeleteClick }}>
+        <GlobalContext.Provider value={{ useModal, openModal, closeModal, videos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick, handleDeleteClick }}>
             {children}
         </GlobalContext.Provider>
     );

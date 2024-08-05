@@ -58,10 +58,10 @@ const PlayerStyled = styled.div``;
 
 const Banner = () => {
 
-  const { useVideos } = useGlobalContext();
+  const { videos } = useGlobalContext();
 
   // Filtrar videos por categoría "Banner"
-  const bannerVideos = useVideos.filter(video => video.Categoria === 'Banner');
+  const bannerVideos = videos.filter(video => video.Categoria === 'Banner');
 
   return (
     <BannerStyled>
