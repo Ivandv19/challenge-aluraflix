@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import BotonDelete from '../BotonDelete';
 import BotonEdit from '../BotonEdit';
+import Categoría from '../BotonCategoria';
 
 const BackendContainer = styled.section`
   display: flex;
@@ -27,19 +28,6 @@ const CardStyled = styled.div`
   /* Estilos de tus tarjetas */
 `;
 
-const ButtonStyled = styled.button`
-  width: 432px;
-  height: 70px;
-  border-radius: 15px;
-  background: var(--BackEnd, #00C86F);
-  border: none;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 37.5px;
-  text-align: center;
-  color: #f5f5f5;
-  font-family: 'Roboto';
-`;
 
 const VideoCard = styled.div`
   width: 429.19px;
@@ -72,6 +60,7 @@ const BackEnd = () => {
 
   const { videos } = useGlobalContext();
 
+
   // Filtrar los videos por la categoría "BACK END"
   const backendVideos = videos.filter(video => video.Categoria === 'BACK END');
 
@@ -79,7 +68,7 @@ const BackEnd = () => {
   return (
     <BackendContainer>
       <CategoryStyled>
-        <ButtonStyled>BACK END</ButtonStyled>
+        <Categoría Categoria={'BACK END'}></Categoría>
       </CategoryStyled>
       <CardsBackendStyled>
         {backendVideos.map(video => (

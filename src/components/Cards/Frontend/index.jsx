@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import BotonDelete from '../BotonDelete';
 import BotonEdit from '../BotonEdit';
+import Categoría from '../BotonCategoria';
 
 
 const FrontendContainer = styled.section`
@@ -28,19 +29,6 @@ const CardStyled = styled.div`
   /* Estilos de tus tarjetas */
 `;
 
-const ButtonStyled = styled.button`
-  width: 432px;
-  height: 70px;
-  border-radius: 15px;
-  background: var(--FrontEnd, #6bd1ff);
-  border: none;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 37.5px;
-  text-align: center;
-  color: #f5f5f5;
-  font-family: 'Roboto';
-`;
 
 const VideoCard = styled.div`
   width: 429.19px;
@@ -77,7 +65,7 @@ const Frontend = () => {
   return (
     <FrontendContainer>
       <CategoryStyled>
-        <ButtonStyled>FRONT END</ButtonStyled>
+        <Categoría Categoria={'FRONT END'}></Categoría>
       </CategoryStyled>
 
       <CardsFrontendStyled>
@@ -93,7 +81,8 @@ const Frontend = () => {
               </DyEContainer>
             </DeleteyEdit>
           </CardStyled>
-        ))}
+        ))
+        };
       </CardsFrontendStyled>
     </FrontendContainer>
   );

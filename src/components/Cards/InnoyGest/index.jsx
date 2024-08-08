@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import BotonDelete from '../BotonDelete';
 import BotonEdit from '../BotonEdit';
+import Categoría from '../BotonCategoria';
 
 
 const FrontendContainer = styled.section`
@@ -25,20 +26,6 @@ const CardsFrontendStyled = styled.section`
 
 const CardStyled = styled.div`
   /* Estilos de tus tarjetas */
-`;
-
-const ButtonStyled = styled.button`
-  width: 432px;
-  height: 70px;
-  border-radius: 15px;
-  background: var(--FrontEnd, #FFBA05);
-  border: none;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 37.5px;
-  text-align: center;
-  color: #f5f5f5;
-  font-family: 'Roboto';
 `;
 
 const VideoCard = styled.div`
@@ -76,7 +63,7 @@ const InnoyGest = () => {
   return (
     <FrontendContainer>
       <CategoryStyled>
-        <ButtonStyled>INNOVACIÓN Y GESTIÓN</ButtonStyled>
+        <Categoría Categoria={'INNOVACIÓN Y GESTIÓN'}></Categoría>
       </CategoryStyled>
       <CardsFrontendStyled>
         {iygVideos.map(video => (
