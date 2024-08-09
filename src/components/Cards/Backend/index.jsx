@@ -29,7 +29,7 @@ const BackEnd = () => {
   const { videos } = useGlobalContext();
   // Filtrar los videos por la categoría "BACK END"
   const backendVideos = videos.filter(video => video.Categoria === 'BACK END');
-    
+
   return (
     <BackendContainer>
       <CategoryStyled>
@@ -39,7 +39,7 @@ const BackEnd = () => {
       <CardsBackendStyled>
         {/*Mapear los videos de la categoría "BACK END" y mostrarlos en tarjetas */}
         {backendVideos.map(video => (
-          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} />
+          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} Categoria={video.Categoria} />
         ))}
       </CardsBackendStyled>
     </BackendContainer>

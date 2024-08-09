@@ -39,7 +39,7 @@ const InnoyGest = () => {
       <CardsFrontendStyled>
         {/* Mapear los videos de la categoría "INNOVACIÓN Y GESTIÓN" y mostrarlos en tarjetas */}
         {iygVideos.map(video => (
-          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} />
+          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} Categoria={video.Categoria} />
         ))}
       </CardsFrontendStyled>
     </FrontendContainer>

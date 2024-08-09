@@ -16,7 +16,7 @@ const ButtonStyled = styled.button`
 
 const categoryColors = {
   'FRONT END': '#6bd1ff', // Azul claro
-  'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Rojo
+  'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
   'BACK END': '#00C86F', // Verde
 };
 

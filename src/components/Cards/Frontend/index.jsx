@@ -23,7 +23,7 @@ const CardsFrontendStyled = styled.section`
   flex-wrap: wrap;
 `;
 
-    // Componente que muestra los videos de la categoría "FRONT END"
+// Componente que muestra los videos de la categoría "FRONT END"
 const Frontend = () => {
   // Obtener los videos del contexto global
   const { videos } = useGlobalContext();
@@ -39,7 +39,7 @@ const Frontend = () => {
       <CardsFrontendStyled>
         {/*Mapear los videos de la categoría "FRONT END" y mostrarlos en tarjetas */}
         {frontendVideos.map((video) => (
-          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} />
+          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} Categoria={video.Categoria} />
         ))
         };
       </CardsFrontendStyled>
