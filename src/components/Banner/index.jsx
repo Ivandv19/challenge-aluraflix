@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import BotonCategoria from '../Cards/BotonCategoria';
 
 const imageUrl = '/img/banner.png';
 
@@ -9,14 +10,20 @@ const BannerStyled = styled.div`
   background-image: url(${imageUrl});
   background-size: cover;
   background-position: center;
-  padding: 343px 10px 155px 10px;
+  padding: 343px 100px 155px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+ 
+ 
+
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin: 0 40px;
+  width: 30vw;
 `;
 
 const BannerMain = styled.div``;
@@ -48,11 +55,20 @@ const PStyled = styled.p`
 `;
 
 const ContainerStyled = styled.section`
-  margin: 0 40px;
+  margin: 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 250px;
+ 
+ 
+
 `;
+
+const BotonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+`
 
 const PlayerStyled = styled.div``;
 
@@ -65,10 +81,13 @@ const Banner = () => {
 
   return (
     <BannerStyled>
+      <BotonContainer>
+        <BotonCategoria Categoria={'Banner'}></BotonCategoria>
+      </BotonContainer>
+
       {bannerVideos.map((video) => (
         <ContainerStyled key={video.id}>
           <Card>
-            <ButtonStyled>FRONT END</ButtonStyled>
             <TitleStyled>{video.Titulo}</TitleStyled>
             <PStyled>{video.Descripcion}</PStyled>
           </Card>

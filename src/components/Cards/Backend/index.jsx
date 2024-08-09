@@ -1,9 +1,8 @@
 
 import styled from 'styled-components';
-
 import { useGlobalContext } from '../../../contexts/GlobalContext';
-import Categoría from '../BotonCategoria';
 import Card from '../Card';
+import BotonCategoria from '../BotonCategoria';
 
 const BackendContainer = styled.section`
   display: flex;
@@ -34,7 +33,7 @@ const BackEnd = () => {
     <BackendContainer>
       <CategoryStyled>
         {/* Mostrar el botón de categoría "BACK END" */}
-        <Categoría Categoria={'BACK END'}></Categoría>
+        <BotonCategoria Categoria={'BACK END'}></BotonCategoria>
       </CategoryStyled>
       <CardsBackendStyled>
         {/*Mapear los videos de la categoría "BACK END" y mostrarlos en tarjetas */}

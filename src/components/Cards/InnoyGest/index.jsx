@@ -1,8 +1,8 @@
 
 import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
-import Categoría from '../BotonCategoria';
 import Card from '../Card';
+import BotonCategoria from '../BotonCategoria';
 
 
 const FrontendContainer = styled.section`
@@ -34,7 +34,7 @@ const InnoyGest = () => {
     <FrontendContainer>
       <CategoryStyled>
         {/* Mostrar el botón de categoría "INNOVACIÓN Y GESTIÓN"  */}
-        <Categoría Categoria={'INNOVACIÓN Y GESTIÓN'}></Categoría>
+        <BotonCategoria Categoria={'INNOVACIÓN Y GESTIÓN'}></BotonCategoria>
       </CategoryStyled>
       <CardsFrontendStyled>
         {/* Mapear los videos de la categoría "INNOVACIÓN Y GESTIÓN" y mostrarlos en tarjetas */}

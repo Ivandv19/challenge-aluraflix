@@ -20,7 +20,7 @@ const categoryColors = {
   'BACK END': '#00C86F', // Verde
 };
 
-function Categoría({ Categoria }) {
+function BotonCategoria({ Categoria }) {
   const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado
 
   return (
@@ -30,4 +30,4 @@ function Categoría({ Categoria }) {
   );
 }
 
-export default Categoría;
+export default BotonCategoria;

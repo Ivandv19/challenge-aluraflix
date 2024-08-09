@@ -1,8 +1,8 @@
 
 import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
-import Categoría from '../BotonCategoria';
 import Card from '../Card';
+import BotonCategoria from '../BotonCategoria';
 
 
 const FrontendContainer = styled.section`
@@ -34,7 +34,7 @@ const Frontend = () => {
     <FrontendContainer>
       <CategoryStyled>
         {/*Mostrar el botón de categoría "FRONT END" */}
-        <Categoría Categoria={'FRONT END'}></Categoría>
+        <BotonCategoria Categoria={'FRONT END'}></BotonCategoria>
       </CategoryStyled>
       <CardsFrontendStyled>
         {/*Mapear los videos de la categoría "FRONT END" y mostrarlos en tarjetas */}
