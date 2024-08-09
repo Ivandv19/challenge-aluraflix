@@ -134,6 +134,7 @@ export const GlobalProvider = ({ children }) => {
             if (!response.ok) {
                 throw new Error('Error al eliminar el video');
             }
+            console.log('Video eliminado correctamente', id);
             // Actualizamos la lista de videos eliminando el video con el id especificado
             setVideos(videos.filter(video => video.id !== id));
         } catch (error) {

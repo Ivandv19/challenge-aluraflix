@@ -1,10 +1,8 @@
 
 import styled from 'styled-components';
-
 import { useGlobalContext } from '../../../contexts/GlobalContext';
-import BotonDelete from '../BotonDelete';
-import BotonEdit from '../BotonEdit';
 import Categoría from '../BotonCategoria';
+import Card from '../Card';
 
 
 const FrontendContainer = styled.section`
@@ -25,62 +23,23 @@ const CardsFrontendStyled = styled.section`
   flex-wrap: wrap;
 `;
 
-const CardStyled = styled.div`
-  /* Estilos de tus tarjetas */
-`;
-
-
-const VideoCard = styled.div`
-  width: 429.19px;
-  height: 260.85px;
-`;
-
-const DyEContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 70px;
-  padding: 15px 0;
-`;
-
-const DeleteyEdit = styled.div`
-  display: flex;
-  width: 440px;
-  height: 59px;
-  border-radius: 0px 0px 15px 15px;
-  border-style: solid;
-  border-color: var(--FrontEnd, #6bd1ff);
-  box-shadow: 0px -4px 5px 3px #6bd1ff inset;
-  background-color: #000000e5;
-  justify-content: center;
-`;
-
-
-
-
-
+    // Componente que muestra los videos de la categoría "FRONT END"
 const Frontend = () => {
+  // Obtener los videos del contexto global
   const { videos } = useGlobalContext();
+  // Filtrar los videos por la categoría "FRONT END"
   const frontendVideos = videos.filter(video => video.Categoria === 'FRONT END');
 
   return (
     <FrontendContainer>
       <CategoryStyled>
+        {/*Mostrar el botón de categoría "FRONT END" */}
         <Categoría Categoria={'FRONT END'}></Categoría>
       </CategoryStyled>
-
       <CardsFrontendStyled>
+        {/*Mapear los videos de la categoría "FRONT END" y mostrarlos en tarjetas */}
         {frontendVideos.map((video) => (
-          <CardStyled key={video.id}>
-            <VideoCard>
-              <img src={video.ImagenURL} alt={`imgcard-${video.id}`} />
-            </VideoCard>
-            <DeleteyEdit>
-              <DyEContainer>
-                <BotonDelete idVideo={video.id} />
-                <BotonEdit idVideo={video.id} />
-              </DyEContainer>
-            </DeleteyEdit>
-          </CardStyled>
+          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} />
         ))
         };
       </CardsFrontendStyled>
