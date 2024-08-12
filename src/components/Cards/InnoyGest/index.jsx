@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
+import { useEffect, useState } from 'react';
 
 
 const FrontendContainer = styled.section`
@@ -27,8 +28,15 @@ const CardsFrontendStyled = styled.section`
 const InnoyGest = () => {
   // Obtener los videos del contexto global
   const { videos } = useGlobalContext();
-  // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN"
-  const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
+
+  const [videosListadosInnoyGest, setVideosListadosInnoyGest] = useState([]);
+
+  useEffect(() => {
+    const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
+    setVideosListadosInnoyGest(iygVideos);
+  }, [videos]);
+
+  console.log('videosListados inova y gest', videosListadosInnoyGest);
 
   return (
     <FrontendContainer>
@@ -38,8 +46,13 @@ const InnoyGest = () => {
       </CategoryStyled>
       <CardsFrontendStyled>
         {/* Mapear los videos de la categoría "INNOVACIÓN Y GESTIÓN" y mostrarlos en tarjetas */}
-        {iygVideos.map(video => (
-          <Card key={video.id} src={video.ImagenURL} alt={`imgcard-${video.id}`} idVideo={video.id} Categoria={video.Categoria} />
+        {videosListadosInnoyGest.map(video => (
+          <Card key={video.id}
+            src={video.ImagenURL}
+            alt={`imgcard-${video.id}`}
+            idVideo={video.id}
+            Categoria={video.Categoria}
+          />
         ))}
       </CardsFrontendStyled>
     </FrontendContainer>
