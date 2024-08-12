@@ -19,8 +19,10 @@ const CardsFrontendStyled = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: 30px;
   flex-wrap: wrap;
+ 
 `;
 
 // Componente que muestra los videos de la categoría "FRONT END"

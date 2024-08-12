@@ -4,17 +4,23 @@ import BotonDelete from '../BotonDelete';
 import BotonEdit from '../BotonEdit';
 
 const CardStyled = styled.div`
-  /* Estilos de tus tarjetas */
+  width: 430px;
+  height: auto;
+
 `;
 
 const VideoCard = styled.div`
-  width: 429.19px;
-  height: 260.85px;
+width: 100%;
+
+img {
+  width: 100%;
+  height: auto;
+}
 `;
 
 const DeleteyEdit = styled.div`
   display: flex;
-  width: 440px;
+  width: 100%;
   height: 59px;
   border-radius: 0px 0px 15px 15px;
   border-style: solid;
