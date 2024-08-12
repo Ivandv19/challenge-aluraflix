@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
-import { useEffect, useState } from 'react';
+
 
 const BackendContainer = styled.section`
   display: flex;
@@ -25,17 +25,9 @@ const CardsBackendStyled = styled.section`
 
 // Componente que muestra los videos de la categoría "BACK END"
 const BackEnd = () => {
-  // Obtener los videos del contexto global
-  const { videos } = useGlobalContext();
-  // Filtrar los videos por la categoría "BACK END"
 
-
-  const [videosListadosBackend, setVideosListadosBackend] = useState([]);
-
-  useEffect(() => {
-    const backendVideos = videos.filter(video => video.Categoria === 'BACK END');
-    setVideosListadosBackend(backendVideos);
-  }, [videos]);
+  // Obtener los videos filtrados por la categoría "BACK END" del contexto global
+  const { videosListadosBackend } = useGlobalContext();
 
   console.log('videosListadosBackend', videosListadosBackend);
 

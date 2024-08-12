@@ -30,6 +30,37 @@ export const GlobalProvider = ({ children }) => {
     }, []);
 
 
+    // Filtrar los videos por la categoría "FRONT END"
+    const [videosListadosFrontend, setVideosListadosFrontend] = useState([]);
+    // Actualizar el estado de los videos listados al montar el componente
+    useEffect(() => {
+        // Filtrar los videos por la categoría "FRONT END" y actualizar el estado
+        const videosFiltrados = videos.filter(video => video.Categoria === 'FRONT END');
+        setVideosListadosFrontend(videosFiltrados);
+    }, [videos]); // Dependencia en `videos` para actualizar si cambia
+
+
+    // Filtrar los videos por la categoría "BACK END"
+    const [videosListadosBackend, setVideosListadosBackend] = useState([]);
+    // Actualizar el estado de los videos listados al montar el componente
+    useEffect(() => {
+        // Filtrar los videos por la categoría "BACK END" y actualizar el estado
+        const backendVideos = videos.filter(video => video.Categoria === 'BACK END');
+        setVideosListadosBackend(backendVideos);
+    }, [videos]);
+
+    // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN"
+    const [videosListadosInnoyGest, setVideosListadosInnoyGest] = useState([]);
+    // Actualizar el estado de los videos listados al montar el componente
+    useEffect(() => {
+        // Filtrar los videos por la categoría "INNOVACIÓN Y GESTIÓN" y actualizar el estado
+        const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
+        setVideosListadosInnoyGest(iygVideos);
+    }, [videos]);
+
+
+
+
     //estado para controlar la seleccion de  los botones
     const [botonSeleccionado, setBotonSeleccionado] = useState('HOME');
 
@@ -154,7 +185,24 @@ export const GlobalProvider = ({ children }) => {
 
     // Proporcionamos el contexto global a los componentes hijos
     return (
-        <GlobalContext.Provider value={{ Modal, openModal, closeModal, videos, postVideo, editVideo, deleteVideo, botonSeleccionado, handleButtonClick, handleDeleteClick, handleVideoSelec, videoSeleccionado, videoAEditar }}>
+        <GlobalContext.Provider value={{
+            Modal,
+            openModal,
+            closeModal,
+            videos,
+            postVideo,
+            editVideo,
+            deleteVideo,
+            botonSeleccionado,
+            handleButtonClick,
+            handleDeleteClick,
+            handleVideoSelec,
+            videoSeleccionado,
+            videoAEditar,
+            videosListadosFrontend,
+            videosListadosBackend,
+            videosListadosInnoyGest
+        }}>
             {children}
         </GlobalContext.Provider>
     );

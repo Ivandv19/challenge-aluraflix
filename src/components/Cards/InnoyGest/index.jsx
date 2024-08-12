@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
-import { useEffect, useState } from 'react';
+
 
 
 const FrontendContainer = styled.section`
@@ -26,15 +26,9 @@ const CardsFrontendStyled = styled.section`
 
 // Componente que muestra los videos de la categoría "INNOVACIÓN Y GESTIÓN"
 const InnoyGest = () => {
-  // Obtener los videos del contexto global
-  const { videos } = useGlobalContext();
 
-  const [videosListadosInnoyGest, setVideosListadosInnoyGest] = useState([]);
-
-  useEffect(() => {
-    const iygVideos = videos.filter(video => video.Categoria === 'INNOVACIÓN Y GESTIÓN');
-    setVideosListadosInnoyGest(iygVideos);
-  }, [videos]);
+  // Obtener los videos filtrados por la categoría "INNOVACIÓN Y GESTIÓN" del contexto global
+  const { videosListadosInnoyGest } = useGlobalContext();
 
   console.log('videosListados inova y gest', videosListadosInnoyGest);
 

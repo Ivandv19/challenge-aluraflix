@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
-import { useEffect, useState } from 'react';
+
 
 
 const FrontendContainer = styled.section`
@@ -27,17 +27,9 @@ const CardsFrontendStyled = styled.section`
 `;
 
 const Frontend = () => {
-  // Obtener los videos del contexto global
-  const { videos } = useGlobalContext();
 
-  // Filtrar los videos por la categoría "FRONT END"
-  const [videosListadosFrontend, setVideosListadosFrontend] = useState([]);
-
-  useEffect(() => {
-    // Filtrar los videos por la categoría "FRONT END" y actualizar el estado
-    const videosFiltrados = videos.filter(video => video.Categoria === 'FRONT END');
-    setVideosListadosFrontend(videosFiltrados);
-  }, [videos]); // Dependencia en `videos` para actualizar si cambia
+  // Obtener los videos filtrados por la categoría "FRONT END" del contexto global
+  const { videosListadosFrontend } = useGlobalContext();
 
   console.log('videos listados del front ', videosListadosFrontend);
 
