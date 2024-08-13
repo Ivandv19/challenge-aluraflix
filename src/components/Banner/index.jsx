@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import BotonCategoria from '../Cards/BotonCategoria';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const imageUrl = '/img/banner.png';
 
@@ -19,11 +19,11 @@ const zoomIn = keyframes`
 
 const BannerStyled = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: url(${imageUrl});
   background-size: cover;
   background-position: center;
-  padding: 343px 100px 155px 100px;
+  padding: 250px 150px 155px 150px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -67,16 +67,49 @@ const BotonContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  animation: ${zoomIn} 0.8s ease-out;
+  animation: ${zoomIn} 0.5s ease-out;
 `
 
 const PlayerStyled = styled.div``;
 
 const Banner = () => {
 
-  const { videos, categoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest } = useGlobalContext();
+  const { videos, categoriaSeleccionada, setCategoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest } = useGlobalContext();
 
   const [videoMain, setVideoMain] = useState([]);
+
+  // Lista de categorías
+  const categorias = ['FRONT END', 'BACK END', 'INNOVACIÓN Y GESTIÓN'];
+
+  // Ref para almacenar el identificador del intervalo
+  const intervalRef = useRef(null);
+
+  // Cambiar categoría automáticamente cada 10 segundos
+  useEffect(() => {
+    // Función para iniciar el intervalo
+    const startInterval = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+
+      intervalRef.current = setInterval(() => {
+        setCategoriaSeleccionada(prevCategoria => {
+          const currentIndex = categorias.indexOf(prevCategoria);
+          const nextIndex = (currentIndex + 1) % categorias.length;
+          return categorias[nextIndex];
+        });
+      }, 10000); // 10000 ms = 10 segundos
+    };
+
+    startInterval(); // Inicia el intervalo al montar el componente
+
+    // Limpiar intervalo al desmontar el componente
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [setCategoriaSeleccionada, categorias]);
 
   // Efecto para actualizar videoMain cuando cambia categoriaSeleccionada
   useEffect(() => {
