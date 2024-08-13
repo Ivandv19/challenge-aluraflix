@@ -59,6 +59,16 @@ export const GlobalProvider = ({ children }) => {
     }, [videos]);
 
 
+    //estado para controlar la seleccion de  las categorias
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
+    // Función para seleccionar la categoría
+
+    const seleccionarCategoria = async (Categoria) => {
+        setCategoriaSeleccionada(Categoria);
+        console.log('Categoría seleccionada:', Categoria);
+    }
+
+
 
 
     //estado para controlar la seleccion de  los botones
@@ -201,7 +211,8 @@ export const GlobalProvider = ({ children }) => {
             videoAEditar,
             videosListadosFrontend,
             videosListadosBackend,
-            videosListadosInnoyGest
+            videosListadosInnoyGest,
+            seleccionarCategoria
         }}>
             {children}
         </GlobalContext.Provider>

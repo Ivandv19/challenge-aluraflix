@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 
 const ButtonStyled = styled.button`
   width: 432px;
@@ -13,6 +14,7 @@ const ButtonStyled = styled.button`
   text-align: center;
   color: #f5f5f5;
   font-family: 'Roboto';
+  cursor: pointer; 
 `;
 
 const categoryColors = {
@@ -24,8 +26,11 @@ const categoryColors = {
 function BotonCategoria({ Categoria }) {
   const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado
 
+  const { seleccionarCategoria } = useGlobalContext();
+
+
   return (
-    <ButtonStyled color={color}>
+    <ButtonStyled color={color} onClick={() => seleccionarCategoria(Categoria)}>
       {Categoria}
     </ButtonStyled>
   );

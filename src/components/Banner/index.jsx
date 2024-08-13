@@ -77,7 +77,9 @@ const Banner = () => {
   const { videos } = useGlobalContext();
 
   // Filtrar videos por categoría "Banner"
-  const bannerVideos = videos.filter(video => video.Categoria === 'Banner');
+  const bannerVideos = videos.filter(video => video.id === '0');
+
+  
 
   return (
     <BannerStyled>

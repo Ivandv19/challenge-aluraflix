@@ -37,7 +37,7 @@ const Frontend = () => {
     <FrontendContainer>
       <CategoryStyled>
         {/* Mostrar el botón de categoría "FRONT END" */}
-        <BotonCategoria Categoria={'FRONT END'} />
+        <BotonCategoria Categoria={'FRONT END'}  />
       </CategoryStyled>
       <CardsFrontendStyled>
         {/* Mapear los videos de la categoría "FRONT END" y mostrarlos en tarjetas */}
