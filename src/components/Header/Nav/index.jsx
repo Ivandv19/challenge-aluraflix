@@ -18,14 +18,14 @@ const Boton = styled.button`
   background-color: ${(props) => (props.selected ? hexToRgba('#000000E5', 0.90) : 'transparent')};
   color: ${(props) => (props.selected ? '#2271D1' : 'white')};
   border: 2px solid ${(props) => (props.selected ? '#2271D1' : '#F5F5F5')};
-  border-radius: 16px;
+  border-radius: 15px;
   font-weight: 900;
   font-size: 20px;
   text-align: center;
   padding: 0.6em 1.2em;
   cursor: pointer;
   transition: border-color 0.25s;
-  box-shadow: ${(props) => (props.selected ? '2px 2px 30px 0px rgba(34, 113, 209, 0.9)' : 'transparent' )};
+  box-shadow: ${(props) => (props.selected ? '2px 2px 25px 0px rgba(34, 113, 209, 0.9)' : 'transparent' )};
 
   
 `;
