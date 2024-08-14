@@ -70,7 +70,10 @@ const BotonContainer = styled.div`
   animation: ${zoomIn} 0.5s ease-out;
 `
 
-const PlayerStyled = styled.div``;
+const PlayerStyled = styled.div`
+
+box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}`: 'transparent')};
+`;
 
 const Banner = () => {
 
@@ -138,7 +141,13 @@ const Banner = () => {
     }
   }, [categoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest]); // Incluye todas las dependencias necesarias
 
+  const categoryColors = {
+    'FRONT END': '#6bd1ff', // Azul claro
+    'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
+    'BACK END': '#00C86F', // Verde
+  };
 
+  const color = categoryColors[categoriaSeleccionada] || '#6bd1ff'; // Color predeterminado
 
   return (
     <BannerStyled>
@@ -153,7 +162,7 @@ const Banner = () => {
             <PStyled>{video.Descripcion}</PStyled>
           </Card>
           <BannerMain>
-            <PlayerStyled>
+            <PlayerStyled color={color}>
               <img src={video.ImagenURL} alt="player" />
             </PlayerStyled>
           </BannerMain>

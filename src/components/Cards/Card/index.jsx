@@ -7,14 +7,18 @@ const CardStyled = styled.div`
   width: 430px;
   height: auto;
 
+  
+
 `;
 
 const VideoCard = styled.div`
 width: 100%;
+box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
 
 img {
   width: 100%;
   height: auto;
+  
 }
 `;
 
@@ -25,7 +29,7 @@ const DeleteyEdit = styled.div`
   border-radius: 0px 0px 15px 15px;
   border-style: solid;
   border-color: ${(props) => props.color || '#6bd1ff'};
-  box-shadow: 0px -4px 5px 3px ${(props) => props.color || '#6bd1ff'} inset;
+  box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
   background-color: #000000e5;
   justify-content: center;
 `;
@@ -48,7 +52,7 @@ function Card({ src, idVideo, alt, Categoria }) {
   const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado
   return (
     <CardStyled>
-      <VideoCard>
+      <VideoCard color={color}>
         <img src={src} alt={alt} />
       </VideoCard>
       <DeleteyEdit color={color}>
