@@ -36,13 +36,12 @@ const InputLabel = styled.label`
 `;
 
 const InputField = styled.input`
-  width: 100%;
+  width: 470px;
+  height: 62px;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
   background-color: transparent;
-  width: 470px;
-  height: 62px;
   border-radius: 10px;
   background: rgba(25, 25, 25, 1);
   border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
@@ -50,13 +49,12 @@ const InputField = styled.input`
 `;
 
 const SelectField = styled.select`
-  width: 100%;
+    width: 470px;
+    height: 62px;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
   background-color: transparent;
-  width: 470px;
-  height: 62px;
   border-radius: 10px;
   background: rgba(25, 25, 25, 1);
   border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
@@ -64,12 +62,11 @@ const SelectField = styled.select`
 `;
 
 const TextAreaField = styled.textarea`
-  width: 100%;
+   width: 573px;
+   height: 220px;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
-  width: 573px;
-  height: 220px;
   border-radius: 15px;
   border: 3px solid #191919;
   background-color: transparent;
@@ -141,14 +138,14 @@ flex-direction: row;
   gap: 30px;
 `
 
-function NuevoVideo(){
+function NuevoVideo() {
   const { postVideo } = useGlobalContext();
   const [titulo, setTitulo] = useState('');
   const [categoria, setCategoria] = useState('frontend');
   const [imagenURL, setImagenURL] = useState('');
   const [videoURL, setVideoURL] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -258,17 +255,17 @@ function NuevoVideo(){
           <BlocksStyled>
             <ButtonContainer>
 
-            <Button type="submit">Guardar</Button>
-            <Button type="button" onClick={() => {
-              setTitulo('');
-              setCategoria('frontend');
-              setImagenURL('');
-              setVideoURL('');
-              setDescripcion('');
-            }}>Limpiar</Button>
+              <Button type="submit">Guardar</Button>
+              <Button type="button" onClick={() => {
+                setTitulo('');
+                setCategoria('frontend');
+                setImagenURL('');
+                setVideoURL('');
+                setDescripcion('');
+              }}>Limpiar</Button>
 
             </ButtonContainer>
-            
+
           </BlocksStyled>
         </FormContainer>
       </NuevosVideosContainer>

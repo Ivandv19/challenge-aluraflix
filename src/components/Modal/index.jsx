@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { useGlobalContext } from '../../contexts/GlobalContext';
+
+// Definir la animación de zoom
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
 
 
 const Formulario = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: auto;
+  justify-content: space-evenly;
+ 
 `;
 
 const imageUrl = '/img/cross.png';
@@ -25,56 +41,68 @@ const CloseButton = styled.button`
 
 const ModalWrapper = styled.div`
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `;
 
 const ModalContent = styled.div`
-  background-color: rgba(3, 18, 47, 1);
+  background-color: rgba(25, 25, 25, 1);
   border-radius: 10px;
-  width: 70%;
-  height: 100%;
-  border: 5px solid rgba(107, 209, 255, 1);
+  width: 1000px;
+  height: 90%;
+  border: 3px solid var(--Blue, rgba(34, 113, 209, 1));
+  box-shadow: 2px 2px 30px 0px var(--Blue, rgba(34, 113, 209, 1));
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 200px;
+  padding: 0 200px;
   position: relative;
+  animation: ${zoomIn} 0.3s ease-out;
+  
 `;
 
 const FormularioContainer = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
 `;
 
 const Title = styled.h1`
   font-family: 'Roboto';
   font-weight: 900;
   font-size: 60px;
-  color: rgba(34, 113, 209, 1);
+  color: white;
+  width: 100%;
+  height: auto;
+  margin: 0;
   text-align: center;
 `;
 
 const SectionStyled = styled.section`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: auto;
 `;
 
 const LabelStyled = styled.label`
   font-weight: 600;
   font-size: 20px;
-  color: rgba(255, 255, 255, 1);
+  color: white;
   margin-bottom: 8px;
   font-family: SourceSansProRegular;
 `;
 
 const InputStyled = styled.input`
-  color: rgba(165, 165, 165, 1);
+
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -84,6 +112,11 @@ const InputStyled = styled.input`
   background-color: transparent;
   margin-bottom: 16px;
   font-family: SourceSansProRegular;
+
+
+  background: rgba(25, 25, 25, 1);
+  border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
+  color: rgba(165, 165, 165, 1);
 
   ::placeholder {
     color: #a5a5a5;
@@ -95,21 +128,28 @@ const InputStyled = styled.input`
 `;
 
 const SelectStyled = styled.select`
-  color: rgba(165, 165, 165, 1);
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-  border: 3px solid var(--Blue, rgba(34, 113, 209, 1));
   border-radius: 10px;
   padding: 16px 11px;
   background-color: transparent;
   margin-bottom: 16px;
   font-family: SourceSansProRegular;
+  background: rgba(25, 25, 25, 1);
+  border: 3px solid ${(props) => (props.color)};
+  color: rgba(165, 165, 165, 1);
 
   option {
-    background-color: rgba(3, 18, 47, 1);
+    background-color: rgba(25, 25, 25, 1);
     color: rgba(165, 165, 165, 1);
     font-family: SourceSansProRegular;
+    
+  }
+
+  &:focus{
+    outline: none;
+
   }
 `;
 
@@ -118,12 +158,13 @@ const TextareaStyled = styled.textarea`
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-  border: 3px solid var(--Blue, rgba(34, 113, 209, 1));
   border-radius: 10px;
   padding: 16px 11px;
-  background-color: transparent;
   margin-bottom: 16px;
   font-family: SourceSansProRegular;
+  background-color: transparent;
+  background: rgba(25, 25, 25, 1);
+
 
   ::placeholder {
     color: #a5a5a5;
@@ -145,35 +186,65 @@ const ButtonStyled = styled.button`
   border-radius: 10px;
   border: 2px;
   color: white;
-  background-color: #000000e5;
-  border: 2px solid var(--Blue, #2271d1);
-  box-shadow: 0px 0px 12px 4px #2271d1 inset;
+  background-color: transparent;
+  border: 2px solid white;
 
   font-family: SourceSansProRegular;
   font-weight: 900;
   font-size: 20px;
   text-align: center;
+  cursor: pointer;
+  
+
+  &:hover{
+    background-color: black;
+    box-shadow: 2px 2px 25px 0px rgba(34, 113, 209, 0.9);
+    border: 2px solid rgba(34, 113, 209, 0.9);
+    transition: border-color 0.25s;
+  }
+  
 `;
 
-const Modal = () => {
 
+
+const HeaderStyled = styled.header`
+  width: 100%;
+  height: auto;
+ 
+`
+
+const categoryColors = {
+  'FRONT END': '#6bd1ff', // Azul claro
+  'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
+  'BACK END': '#00C86F', // Verde
+};
+
+
+const Modal = () => {
   const { Modal, closeModal, videoAEditar, editVideo } = useGlobalContext();
 
   // Estado local para los inputs
   const [title, setTitle] = useState(videoAEditar.Titulo || '');
-  const [category, setCategory] = useState(videoAEditar.Categoria || 'FRONT END');
+  const [category, setCategory] = useState(videoAEditar.Categoria || '');
   const [image, setImage] = useState(videoAEditar.ImagenURL || '');
   const [video, setVideo] = useState(videoAEditar.VideoURL || '');
   const [description, setDescription] = useState(videoAEditar.Descripcion || '');
 
+  
   useEffect(() => {
     // Actualizar el estado cuando cambie el video a editar
     setTitle(videoAEditar.Titulo || '');
-    setCategory(videoAEditar.Categoria || 'FRONT END');
+    setCategory(videoAEditar.Categoria || '');
     setImage(videoAEditar.ImagenURL || '');
     setVideo(videoAEditar.VideoURL || '');
     setDescription(videoAEditar.Descripcion || '');
   }, [videoAEditar]);
+
+  const color = categoryColors[category]; // Color predeterminado
+  console.log(category);
+  
+
+
 
   const handleSave = async () => {
     // Validación de campos
@@ -204,13 +275,13 @@ const Modal = () => {
     <>
       {Modal && (
         <ModalWrapper>
-          <ModalContent>
+          <ModalContent color={color}>
             <CloseButton aria-label="Close" onClick={closeModal}>&times;</CloseButton>
             <FormularioContainer>
               <Formulario>
-                <header>
-                  <Title>EDITAR VIDEO</Title>
-                </header>
+                <HeaderStyled>
+                  <Title color={color}>EDITAR VIDEO</Title>
+                </HeaderStyled>
 
                 <SectionStyled>
                   <LabelStyled htmlFor="title">Título</LabelStyled>
@@ -229,6 +300,7 @@ const Modal = () => {
                     name="category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
+                    color={color}
 
                   >
                     <option value="FRONT END">Front End</option>
@@ -267,8 +339,8 @@ const Modal = () => {
                 </SectionStyled>
 
                 <FooterStyled>
-                  <ButtonStyled type="button" onClick={handleSave}>GUARDAR</ButtonStyled>
-                  <ButtonStyled type="button" onClick={closeModal}>
+                  <ButtonStyled type="button" onClick={handleSave} color={color}>GUARDAR</ButtonStyled>
+                  <ButtonStyled type="button" onClick={closeModal} color={color}>
                     CANCELAR
                   </ButtonStyled>
                 </FooterStyled>

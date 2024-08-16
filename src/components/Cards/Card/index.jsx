@@ -58,7 +58,7 @@ function Card({ src, idVideo, alt, Categoria }) {
       <DeleteyEdit color={color}>
         <DyEContainer>
           <BotonDelete idVideo={idVideo} />
-          <BotonEdit idVideo={idVideo} />
+          <BotonEdit idVideo={idVideo}/>
         </DyEContainer>
       </DeleteyEdit>
     </CardStyled>
