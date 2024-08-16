@@ -79,8 +79,8 @@ const Button = styled.button`
   height: 54px;
   color: rgba(255, 255, 255, 1);
   background-color: transparent;
-  border-radius: 15px;
-  border: 2px solid rgba(34, 113, 209, 1);
+  border-radius: 10px;
+  border: 2px solid white;
   font-family: 'SourceSansProRegular';
   font-weight: 900;
   font-size: 20px;
@@ -88,6 +88,13 @@ const Button = styled.button`
   text-align: center;
   cursor: pointer;
   margin-right: 10px;
+
+  &:hover{
+    background-color: black;
+    box-shadow: 2px 2px 25px 0px rgba(34, 113, 209, 0.9);
+    border: 2px solid rgba(34, 113, 209, 0.9);
+    transition: border-color 0.25s;
+  }
 `;
 
 const BlocksStyled = styled.div`

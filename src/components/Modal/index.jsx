@@ -184,11 +184,9 @@ const ButtonStyled = styled.button`
   width: 180.13px;
   height: 54px;
   border-radius: 10px;
-  border: 2px;
   color: white;
   background-color: transparent;
   border: 2px solid white;
-
   font-family: SourceSansProRegular;
   font-weight: 900;
   font-size: 20px;
