@@ -3,10 +3,6 @@ import { createContext, useState, useContext, useEffect } from 'react';
 // Creamos el contexto global
 const GlobalContext = createContext();
 
-const API = 'https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos';
-
-
-
 // Definimos el proveedor global
 export const GlobalProvider = ({ children }) => {
 
@@ -17,7 +13,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para obtener la lista de videos desde el servidor
     const fetchVideos = async () => {
         try {
-            const response = await fetch(API);
+            const response = await fetch('https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos');
             if (!response.ok) {
                 throw new Error('Error al obtener los videos');
             }
@@ -100,7 +96,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para añadir un nuevo video
     const postVideo = async (newVideo) => {
         try {
-            const response = await fetch(API, {
+            const response = await fetch('https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,7 +117,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para editar un video existente
     const editVideo = async (id, updatedFields) => {
         try {
-            const response = await fetch(`API${id}`, {
+            const response = await fetch(`https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos/${id}`, {
                 method: 'PATCH', // Utilizando PATCH para actualizaciones parciales
                 headers: {
                     'Content-Type': 'application/json',
@@ -172,7 +168,7 @@ export const GlobalProvider = ({ children }) => {
     // Función para eliminar un video
     const deleteVideo = async (id) => {
         try {
-            const response = await fetch(`API${id}`, {
+            const response = await fetch(`https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {

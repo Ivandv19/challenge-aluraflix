@@ -228,7 +228,6 @@ const Modal = () => {
   const [video, setVideo] = useState(videoAEditar.VideoURL || '');
   const [description, setDescription] = useState(videoAEditar.Descripcion || '');
 
-  
   useEffect(() => {
     // Actualizar el estado cuando cambie el video a editar
     setTitle(videoAEditar.Titulo || '');
@@ -238,11 +237,12 @@ const Modal = () => {
     setDescription(videoAEditar.Descripcion || '');
   }, [videoAEditar]);
 
+  
   const color = categoryColors[category]; // Color predeterminado
   console.log(category);
   
 
-
+  
 
   const handleSave = async () => {
     // Validación de campos
