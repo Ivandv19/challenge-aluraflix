@@ -4,11 +4,15 @@ import Frontend from "./Frontend"
 import InnoyGest from "./InnoyGest"
 
 const CardsContainer = styled.section`
-padding: 25px 100px 100px 100px;
+padding: 50px 100px 50px 100px;
 display: flex;
 flex-direction: column;
 gap: 93px;
-    
+
+@media (max-width: 755px) {
+    padding: 50px 20px;
+}
+
 `
 
 const Cards = () => {

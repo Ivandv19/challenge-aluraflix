@@ -15,8 +15,13 @@ const ButtonStyled = styled.button`
   color: #f5f5f5;
   font-family: 'Roboto';
   cursor: pointer; 
-  box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}`: 'transparent')};
+  box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
   transition: border-color 0.25s;
+
+  @media (max-width: 755px){
+    width: 100%;
+    height: 60px;
+  }
 `;
 
 const categoryColors = {

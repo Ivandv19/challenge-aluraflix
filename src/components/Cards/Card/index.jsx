@@ -6,9 +6,6 @@ import BotonEdit from '../BotonEdit';
 const CardStyled = styled.div`
   width: 430px;
   height: auto;
-
-  
-
 `;
 
 const VideoCard = styled.div`
@@ -58,7 +55,7 @@ function Card({ src, idVideo, alt, Categoria }) {
       <DeleteyEdit color={color}>
         <DyEContainer>
           <BotonDelete idVideo={idVideo} />
-          <BotonEdit idVideo={idVideo}/>
+          <BotonEdit idVideo={idVideo} />
         </DyEContainer>
       </DeleteyEdit>
     </CardStyled>

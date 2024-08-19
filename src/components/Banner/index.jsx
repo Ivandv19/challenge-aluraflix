@@ -27,6 +27,15 @@ const BannerStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (min-width: 756px) and (max-width: 1199px) {
+    padding: 150px 50px 100px 50px;
+    gap: 50px;
+  }
+
+  @media (max-width: 755px){
+    display: none;
+  }
  
 `;
 
@@ -61,6 +70,11 @@ const ContainerStyled = styled.section`
   gap: 250px;
   animation: ${zoomIn} 0.8s ease-out;
 
+  @media (min-width: 600px) and (max-width: 1199px) {
+    gap: 0;
+    justify-content: space-between;
+  }
+
 `;
 
 const BotonContainer = styled.div`
@@ -68,6 +82,9 @@ const BotonContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   animation: ${zoomIn} 0.5s ease-out;
+  @media (min-width: 600px) and (max-width: 1199px){
+    justify-content: center;
+  }
 `
 
 const PlayerStyled = styled.div`

@@ -10,18 +10,33 @@ const FrontendContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  @media (max-width: 755px) {
+    justify-content: center;
+    align-items: center;
+}
 `;
 
 const CategoryStyled = styled.section`
-  /* Estilos de tu categoría */
+  @media (max-width: 755px){
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const CardsFrontendStyled = styled.section`
+width: 100%;
+height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
+
+  @media (max-width: 755px) {
+    justify-content: center;
+    align-items: center;
+}
 `;
 
 // Componente que muestra los videos de la categoría "INNOVACIÓN Y GESTIÓN"
@@ -41,7 +56,8 @@ const InnoyGest = () => {
       <CardsFrontendStyled>
         {/* Mapear los videos de la categoría "INNOVACIÓN Y GESTIÓN" y mostrarlos en tarjetas */}
         {videosListadosInnoyGest.map(video => (
-          <Card key={video.id}
+          <Card
+            key={video.id}
             src={video.ImagenURL}
             alt={`imgcard-${video.id}`}
             idVideo={video.id}

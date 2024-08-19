@@ -19,17 +19,36 @@ const HeaderStyled = styled.header`
   position: fixed;
   top: 0;
   z-index: 1;
+
+  @media (max-width: 599px) {
+    top: auto;
+   bottom: 0;
+   border-top: 4px solid var(--Blue, rgba(34, 113, 209, 1));
+   border-bottom: 0;
+   justify-content: center;
+   padding: 30px 0;
+  
+  }
+`;
+
+const ImgContainer = styled.div`
+@media (max-width: 599px){
+    display: none;
+}
+
 `;
 
 const Header = () => {
-    const { botonSeleccionado } = useGlobalContext();
-    
-    return (
-        <HeaderStyled selected={botonSeleccionado === 'HOME'}>
-            <img src="/img/LogoMain.png" alt="logo" />
-            <Nav />
-        </HeaderStyled>
-    );
+  const { botonSeleccionado } = useGlobalContext();
+
+  return (
+    <HeaderStyled selected={botonSeleccionado === 'home'}>
+      <ImgContainer>
+        <img src="/img/LogoMain.png" alt="logo" />
+      </ImgContainer>
+      <Nav />
+    </HeaderStyled>
+  );
 };
 
 export default Header;

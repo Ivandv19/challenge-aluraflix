@@ -1,7 +1,6 @@
-
 import styled from 'styled-components';
-import hexToRgba from 'hex-to-rgba';
 import { Link } from 'react-router-dom';
+import BotonesNav from './BotonesNav';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 
 const NavStyled = styled.nav`
@@ -12,40 +11,66 @@ const NavStyled = styled.nav`
   align-items: center;
 `;
 
-const Boton = styled.button`
-  width: 180.13px;
-  height: 54px;
-  background-color: ${(props) => (props.selected ? hexToRgba('#000000E5', 0.90) : 'transparent')};
-  color: ${(props) => (props.selected ? '#2271D1' : 'white')};
-  border: 2px solid ${(props) => (props.selected ? '#2271D1' : '#F5F5F5')};
-  border-radius: 15px;
-  font-weight: 900;
-  font-size: 20px;
-  text-align: center;
-  padding: 0.6em 1.2em;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  box-shadow: ${(props) => (props.selected ? '2px 2px 25px 0px rgba(34, 113, 209, 0.9)' : 'transparent' )};
+const ImgContainer = styled.img`
+  width: 35px;
+  height: 35px;
+  display: none;
 
-  
+  @media (max-width: 600px) {
+    display: block;
+  }
+
+  // Cambiar imagen en hover
+  &:hover {
+    content: url(${(props) => (props.botonSeleccionado === props.boton ? `/img/icono-${props.boton}-activo.png` : `/img/icono-${props.boton}-activo.png`)});
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit; /* Mantiene el color del texto del enlace */
+`;
+
+const Pstyled = styled.p`
+
+
+
+  @media (max-width: 600px) {
+    font-weight: 900;
+    display: ${(props) => (props.botonSeleccionado === props.boton ? 'block' : 'none')};
+  }
 `;
 
 const Nav = () => {
-
-  const { botonSeleccionado, handleButtonClick } = useGlobalContext();
-
+  const { botonSeleccionado } = useGlobalContext();
   return (
     <NavStyled>
-      <Link to="/" onClick={() => handleButtonClick('HOME')}>
-        <Boton selected={botonSeleccionado === 'HOME'}> HOME </Boton>
-      </Link>
-      <Link to="/nuevovideo" onClick={() => handleButtonClick('nuevovideo')}>
-        <Boton selected={botonSeleccionado === 'nuevovideo'}> NUEVO VIDEO </Boton>
-      </Link>
-    </NavStyled >
-
-
+      <StyledLink to="/">
+        <BotonesNav boton="home">
+          <ImgContainer
+            src={botonSeleccionado === 'home' ? '/img/icono-home-activo.png' : '/img/icono-home.png'}
+            botonSeleccionado={botonSeleccionado}
+            boton="home"
+          />
+          <Pstyled botonSeleccionado={botonSeleccionado} boton="home">
+            HOME
+          </Pstyled>
+        </BotonesNav>
+      </StyledLink>
+      <StyledLink to="/nuevovideo">
+        <BotonesNav boton="nuevo-video">
+          <ImgContainer
+            src={botonSeleccionado === 'nuevo-video' ? '/img/icono-nuevo-video-activo.png' : '/img/icono-nuevo-video.png'}
+            botonSeleccionado={botonSeleccionado}
+            boton="nuevo-video"
+          />
+          <Pstyled botonSeleccionado={botonSeleccionado} boton="nuevo-video">
+            NUEVO VIDEO
+          </Pstyled>
+        </BotonesNav>
+      </StyledLink>
+    </NavStyled>
   );
-}
+};
 
 export default Nav;

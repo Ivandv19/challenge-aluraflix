@@ -71,10 +71,12 @@ export const GlobalProvider = ({ children }) => {
 
 
     //estado para controlar la seleccion de  los botones
-    const [botonSeleccionado, setBotonSeleccionado] = useState('HOME');
+    const [botonSeleccionado, setBotonSeleccionado] = useState('home');
 
     const handleButtonClick = (buttonName) => {
         setBotonSeleccionado(buttonName);
+        console.log(buttonName);
+        
     }
 
 
