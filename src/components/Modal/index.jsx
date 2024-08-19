@@ -50,6 +50,12 @@ const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 600px) {
+    padding: 0px;
+    box-sizing: border-box;
+    
+  }
   
 `;
 
@@ -66,6 +72,12 @@ const ModalContent = styled.div`
   padding: 0 200px;
   position: relative;
   animation: ${zoomIn} 0.3s ease-out;
+
+  @media (max-width: 600px) {
+    padding: 0 10px;
+    box-sizing: border-box;
+    height: 100%;
+  }
   
 `;
 
@@ -125,6 +137,8 @@ const InputStyled = styled.input`
     line-height: 24px;
     font-family: SourceSansProRegular;
   }
+
+ 
 `;
 
 const SelectStyled = styled.select`
@@ -172,12 +186,24 @@ const TextareaStyled = styled.textarea`
     font-weight: 600;
     line-height: 24px;
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+   height: 20vh;
+  }
 `;
 
 const FooterStyled = styled.footer`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 600px) {
+    box-sizing: border-box;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 const ButtonStyled = styled.button`
@@ -199,6 +225,11 @@ const ButtonStyled = styled.button`
     box-shadow: 2px 2px 25px 0px rgba(34, 113, 209, 0.9);
     border: 2px solid rgba(34, 113, 209, 0.9);
     transition: border-color 0.25s;
+  }
+  @media (max-width: 600px) {
+    box-sizing: border-box;
+    width: 100%;
+
   }
   
 `;
