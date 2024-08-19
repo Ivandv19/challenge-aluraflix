@@ -9,6 +9,10 @@ const NuevosVideosContainer = styled.div`
   padding: 120px 0 50px 0;
   width: 100%;
   height: auto;
+
+  @media (max-width: 599px) {
+    padding: 0;
+  }
 `;
 
 const TitulosContainer = styled.section`
@@ -23,6 +27,20 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 60px;
+
+  @media (min-width: 600px) and (max-width: 1199px){
+    padding: 20px 20px;
+    gap: 0;
+  }
+
+  @media (max-width: 599px) {
+    padding: 0 20px;
+    padding-bottom: 200px;
+    width: 100%;
+    height: auto;
+  }
+
+
 `;
 
 const InputLabel = styled.label`
@@ -46,6 +64,11 @@ const InputField = styled.input`
   background: rgba(25, 25, 25, 1);
   border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
   color: white;
+
+  @media (max-width: 599px) {
+    width: 100%;
+   
+  }
 `;
 
 const SelectField = styled.select`
@@ -59,6 +82,10 @@ const SelectField = styled.select`
   background: rgba(25, 25, 25, 1);
   border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
   color: white;
+
+  @media (max-width: 599px) {
+    width: 100%;
+  }
 `;
 
 const TextAreaField = styled.textarea`
@@ -72,6 +99,10 @@ const TextAreaField = styled.textarea`
   background-color: transparent;
   background: rgba(25, 25, 25, 1);
   color: white;
+
+  @media (max-width: 599px) {
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
@@ -95,6 +126,12 @@ const Button = styled.button`
     border: 2px solid rgba(34, 113, 209, 0.9);
     transition: border-color 0.25s;
   }
+
+  @media (max-width: 599px) {
+    width: 100%;
+    height: 54px;
+    margin: 0;
+  }
 `;
 
 const BlocksStyled = styled.div`
@@ -104,6 +141,26 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 
+
+
+@media (min-width: 600px) and (max-width: 1199px) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3{
+  padding-bottom: 50px;
+}
+}
+
+@media (max-width: 599px) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+
+}
 
 
 `;
@@ -137,12 +194,24 @@ const H3 = styled.h3`
 const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 599px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const ButtonContainer = styled.div`
 display: flex;
 flex-direction: row;
   gap: 30px;
+
+  @media (max-width: 599px) {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+  }
 `
 
 function NuevoVideo() {
@@ -261,7 +330,6 @@ function NuevoVideo() {
 
           <BlocksStyled>
             <ButtonContainer>
-
               <Button type="submit">Guardar</Button>
               <Button type="button" onClick={() => {
                 setTitulo('');
@@ -270,7 +338,6 @@ function NuevoVideo() {
                 setVideoURL('');
                 setDescripcion('');
               }}>Limpiar</Button>
-
             </ButtonContainer>
 
           </BlocksStyled>
