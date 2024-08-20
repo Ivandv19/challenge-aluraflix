@@ -34,10 +34,11 @@ const FormContainer = styled.form`
   }
 
   @media (max-width: 599px) {
-    padding: 0 20px;
+    padding: 0 10px;
     padding-bottom: 200px;
     width: 100%;
     height: auto;
+    gap: 20px;
   }
 
 
@@ -98,6 +99,7 @@ const TextAreaField = styled.textarea`
   border: 3px solid #191919;
   background-color: transparent;
   background: rgba(25, 25, 25, 1);
+  border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
   color: white;
 
   @media (max-width: 599px) {
