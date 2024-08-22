@@ -27,6 +27,7 @@ const BannerStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
 
   @media (min-width: 756px) and (max-width: 1199px) {
     padding: 150px 50px 100px 50px;
@@ -44,9 +45,12 @@ const Card = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 30vw;
+  border-radius: 15px 15px 15px 15px;
 `;
 
-const BannerMain = styled.div``;
+const BannerMain = styled.div`
+border-radius: 15px 15px 15px 15px;
+`;
 
 
 const TitleStyled = styled.h2`
@@ -61,6 +65,7 @@ const PStyled = styled.p`
   font-weight: 300;
   font-size: 18px;
   color: #f5f5f5;
+  
 `;
 
 const ContainerStyled = styled.section`
@@ -88,8 +93,13 @@ const BotonContainer = styled.div`
 `
 
 const PlayerStyled = styled.div`
+border-radius: 15px 15px 15px 15px;
 
 box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}`: 'transparent')};
+
+img {
+  border-radius: 15px 15px 15px 15px;
+}
 `;
 
 const Banner = () => {

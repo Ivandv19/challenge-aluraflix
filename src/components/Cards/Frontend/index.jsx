@@ -46,8 +46,7 @@ const Frontend = () => {
 
   // Obtener los videos filtrados por la categoría "FRONT END" del contexto global
   const { videosListadosFrontend } = useGlobalContext();
-
-  console.log('videos listados del front ', videosListadosFrontend);
+  
 
   return (
     <FrontendContainer>

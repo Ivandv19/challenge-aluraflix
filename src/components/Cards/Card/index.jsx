@@ -6,15 +6,18 @@ import BotonEdit from '../BotonEdit';
 const CardStyled = styled.div`
   width: 430px;
   height: auto;
+  border-radius: 15px 15px 0px 0px;
 `;
 
 const VideoCard = styled.div`
 width: 100%;
 box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
+border-radius: 15px 15px 0px 0px;
 
 img {
   width: 100%;
   height: auto;
+  border-radius: 15px 15px 0px 0px;
   
 }
 `;
