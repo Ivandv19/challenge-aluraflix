@@ -74,7 +74,7 @@ const ModalContent = styled.div`
   animation: ${zoomIn} 0.3s ease-out;
 
   @media (max-width: 600px) {
-    padding: 0 10px;
+    padding: 0 20px;
     box-sizing: border-box;
     height: 100%;
   }
@@ -96,6 +96,10 @@ const Title = styled.h1`
   height: auto;
   margin: 0;
   text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 35px;
+  }
 `;
 
 const SectionStyled = styled.section`
