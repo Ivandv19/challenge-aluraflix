@@ -35,15 +35,11 @@ Aluraflix es una aplicación web diseñada para gestionar y explorar una colecci
 ```bash
 git clone https://github.com/IvandevI9/alura-flix.git
 ```
-2. Navega al directorio del proyecto:
-```bash
-cd alura-flix
-```
-3. Instala las dependencias:
+2. Instala las dependencias:
 ```bash
 npm install
 ```
-4. Inicia el servidor de desarrollo:
+3. Inicia el servidor de desarrollo:
 ```bash
 npm run dev
 ```
