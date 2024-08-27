@@ -7,6 +7,11 @@ const CardStyled = styled.div`
   width: 430px;
   height: auto;
   border-radius: 15px 15px 0px 0px;
+
+  @media (max-width: 755px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const VideoCard = styled.div`
