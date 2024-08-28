@@ -26,13 +26,15 @@ const HeaderStyled = styled.header`
    border-top: 4px solid var(--Blue, rgba(34, 113, 209, 1));
    border-bottom: 0;
    justify-content: center;
-   padding: 30px 0;
-   height: 100px;
+  padding: 0;
+   height: 60px;
   
   }
 `;
 
 const ImgContainer = styled.div`
+
+
 @media (max-width: 599px){
     display: none;
 }

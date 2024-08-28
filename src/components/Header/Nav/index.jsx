@@ -18,6 +18,8 @@ const ImgContainer = styled.img`
 
   @media (max-width: 600px) {
     display: block;
+    width: 27px;
+    height: 27px;
   }
 
   // Cambiar imagen en hover
@@ -38,6 +40,7 @@ const Pstyled = styled.p`
   @media (max-width: 600px) {
     font-weight: 900;
     display: ${(props) => (props.botonSeleccionado === props.boton ? 'block' : 'none')};
+    font-size: 15px;
   }
 `;
 

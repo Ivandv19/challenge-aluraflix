@@ -31,7 +31,7 @@ const Boton = styled.button`
     border-radius: 50px;
     width: 100%;
     height: auto;
-    padding: 10px 25px;
+    padding: 5px 15px;
     gap: 10px;
     border: ${(props) => (props.isSelected ? '2px' : '0')} solid ${(props) => (props.isSelected ? "#2271D1" : "white")};
     color: ${(props) => (props.isSelected ? "#2271D1" : "white")};
