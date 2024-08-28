@@ -18,6 +18,8 @@ const NuevosVideosContainer = styled.div`
 const TitulosContainer = styled.section`
   padding: 20px;
   margin-bottom: 20px;
+
+ 
 `;
 
 const FormContainer = styled.form`
@@ -52,6 +54,10 @@ const InputLabel = styled.label`
   font-size: 20px;
   line-height: 24px;
   color: #FFFFFF;
+
+  @media (max-width: 599px) {
+    font-size: 15px;
+  }
 `;
 
 const InputField = styled.input`
@@ -174,6 +180,10 @@ const H1 = styled.h1`
   text-align: center;
   font-family: 'Roboto';
   color: #F5F5F5;
+
+  @media (max-width: 599px) {
+    font-size: 40px;
+  }
 `;
 
 const H2 = styled.h2`
@@ -183,6 +193,10 @@ const H2 = styled.h2`
   text-align: center;
   font-family: 'Roboto';
   color: #F5F5F5;
+
+  @media (max-width: 599px) {
+    font-size: 15px;
+  }
 `;
 
 const H3 = styled.h3`
@@ -191,6 +205,10 @@ const H3 = styled.h3`
   font-size: 36px;
   line-height: 24px;
   color: #FFFFFF;
+
+  @media (max-width: 599px) {
+    font-size: 30px;
+  }
 `;
 
 const DivStyled = styled.div`
