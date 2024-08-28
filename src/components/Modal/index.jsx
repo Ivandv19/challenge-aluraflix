@@ -60,12 +60,9 @@ const ModalWrapper = styled.div`
   @media (max-width: 600px) {
     padding: 0px;
     box-sizing: border-box;
-
-    top: 0;
-  left: 0;
-  width: 100%;
-  max-height: 100%; /* Ajusta la altura máxima del modal */
-  overflow-y: auto; /* Habilita el scroll dentro del modal */
+    width: 100%;
+    max-height: 100vh; /* Ajusta la altura máxima del modal */
+    overflow-y: auto; /* Habilita el scroll dentro del modal */
     
   }
   
@@ -89,11 +86,9 @@ const ModalContent = styled.div`
     padding: 0;
     box-sizing: border-box;
     position: fixed; /* Fija el modal en la pantalla */
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-height: auto; /* Ajusta la altura máxima del modal */
-  overflow-y: auto; /* Habilita el scroll dentro del modal */
+    width: 100%;
+     max-height: 100vh; /* Ajusta la altura máxima del modal */
+    overflow-y: auto; /* Habilita el scroll dentro del modal */
   }
   
 `;
@@ -104,6 +99,7 @@ const FormularioContainer = styled.div`
   display: flex;
 
   @media (max-width: 600px) {
+    width: 100%;
     height: auto;
   }
 `;
@@ -118,8 +114,8 @@ const Title = styled.h1`
   margin: 0;
   text-align: center;
 
-  @media (max-width: 600px) {
-    font-size: 35px;
+  @media (max-width: 599px) {
+    font-size: 30px;
   }
 `;
 
@@ -136,6 +132,10 @@ const LabelStyled = styled.label`
   color: white;
   margin-bottom: 8px;
   font-family: SourceSansProRegular;
+
+  @media (max-width: 599px) {
+    font-size: 15px;
+  }
 `;
 
 const InputStyled = styled.input`
@@ -143,7 +143,6 @@ const InputStyled = styled.input`
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-  border: 3px solid var(--Blue, rgba(34, 113, 209, 1));
   border-radius: 10px;
   padding: 16px 11px;
   background-color: transparent;
@@ -161,6 +160,10 @@ const InputStyled = styled.input`
     font-weight: 600;
     line-height: 24px;
     font-family: SourceSansProRegular;
+  }
+
+  @media (max-width: 599px) {
+    font-size: 16px;
   }
 
  
@@ -190,6 +193,10 @@ const SelectStyled = styled.select`
     outline: none;
 
   }
+
+  @media (max-width: 599px) {
+    font-size: 16px;
+  }
 `;
 
 const TextareaStyled = styled.textarea`
@@ -215,6 +222,7 @@ const TextareaStyled = styled.textarea`
   @media (max-width: 600px) {
     width: 100%;
    height: 20vh;
+   font-size: 16px;
   }
 `;
 
@@ -254,6 +262,7 @@ const ButtonStyled = styled.button`
   @media (max-width: 600px) {
     box-sizing: border-box;
     width: 100%;
+    font-size: 17px;
 
   }
   
@@ -330,7 +339,7 @@ const Modal = () => {
       {Modal && (
         <ModalWrapper>
           <ModalContent color={color}>
-            <CloseButton aria-label="Close" onClick={closeModal}>&times;</CloseButton>
+            <CloseButton aria-label="Close" onClick={closeModal}></CloseButton>
             <FormularioContainer>
               <Formulario>
                 <HeaderStyled>
