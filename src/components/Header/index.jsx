@@ -27,6 +27,7 @@ const HeaderStyled = styled.header`
    border-bottom: 0;
    justify-content: center;
    padding: 30px 0;
+   height: 100px;
   
   }
 `;
