@@ -22,6 +22,12 @@ const Formulario = styled.div`
   width: 100%;
   height: auto;
   justify-content: space-evenly;
+
+  @media (max-width: 600px) {
+    padding: 30px 20px;
+    height: auto;
+    gap: 30px;
+  }
  
 `;
 
@@ -54,6 +60,12 @@ const ModalWrapper = styled.div`
   @media (max-width: 600px) {
     padding: 0px;
     box-sizing: border-box;
+
+    top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%; /* Ajusta la altura máxima del modal */
+  overflow-y: auto; /* Habilita el scroll dentro del modal */
     
   }
   
@@ -74,9 +86,14 @@ const ModalContent = styled.div`
   animation: ${zoomIn} 0.3s ease-out;
 
   @media (max-width: 600px) {
-    padding: 0 20px;
+    padding: 0;
     box-sizing: border-box;
-    height: 100%;
+    position: fixed; /* Fija el modal en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: auto; /* Ajusta la altura máxima del modal */
+  overflow-y: auto; /* Habilita el scroll dentro del modal */
   }
   
 `;
@@ -85,6 +102,10 @@ const FormularioContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+
+  @media (max-width: 600px) {
+    height: auto;
+  }
 `;
 
 const Title = styled.h1`
@@ -272,12 +293,12 @@ const Modal = () => {
     setDescription(videoAEditar.Descripcion || '');
   }, [videoAEditar]);
 
-  
+
   const color = categoryColors[category]; // Color predeterminado
   console.log(category);
-  
 
-  
+
+
 
   const handleSave = async () => {
     // Validación de campos
@@ -285,7 +306,7 @@ const Modal = () => {
       alert('Por favor, completa todos los campos obligatorios.');
       return;
     }
-    
+
     // Lógica para guardar el formulario
     try {
       const updatedVideo = {
