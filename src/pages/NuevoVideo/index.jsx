@@ -137,8 +137,10 @@ const Button = styled.button`
 
   @media (max-width: 599px) {
     width: 100%;
-    height: 54px;
+    height: auto;
     margin: 0;
+    padding: 10px;
+    font-size: 16px;
   }
 `;
 
