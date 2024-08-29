@@ -15,6 +15,15 @@ const Edit = styled.div`
   font-size: 16px;
   line-height: 18.75px;
   cursor: pointer;
+
+  @media (max-width: 755px) {
+    font-size: 14px;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+  }
 `;
 
 const BotonEdit = ({idVideo}) => {

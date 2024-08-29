@@ -17,6 +17,16 @@ const Delete = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+
+  @media (max-width: 755px) {
+    font-size: 14px;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+  }
 `;
 
 const BotonDelete = ({ idVideo }) => {
