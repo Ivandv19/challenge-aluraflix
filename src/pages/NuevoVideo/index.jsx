@@ -37,7 +37,7 @@ const FormContainer = styled.form`
 
   @media (max-width: 599px) {
     padding: 0 10px;
-    padding-bottom: 200px;
+    padding-bottom: 100px;
     width: 100%;
     height: auto;
     gap: 20px;
