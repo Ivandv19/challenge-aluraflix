@@ -9,7 +9,7 @@ const MainStyled = styled.main`
   width: 100%;
   height: auto;
   background-color: ${hexToRgba('#000000', 0.90)};
-  padding: 125px 0 0 0;
+  padding: 100px 0 0 0;
 
   @media (max-width: 599px) {
     padding:0;

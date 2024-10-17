@@ -23,9 +23,10 @@ const BannerStyled = styled.div`
   background-image: url(${imageUrl});
   background-size: cover;
   background-position: center;
-  padding: 250px 150px 155px 150px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   
 
@@ -94,13 +95,18 @@ const BotonContainer = styled.div`
 
 const PlayerStyled = styled.div`
 border-radius: 15px 15px 15px 15px;
-
-box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}`: 'transparent')};
+box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
 
 img {
   border-radius: 15px 15px 15px 15px;
 }
 `;
+
+const InfoContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`
 
 const Banner = () => {
 
@@ -178,23 +184,26 @@ const Banner = () => {
 
   return (
     <BannerStyled>
-      <BotonContainer>
-        <BotonCategoria Categoria={categoriaSeleccionada}></BotonCategoria>
-      </BotonContainer>
+      <InfoContainer>
+        <BotonContainer>
+          <BotonCategoria Categoria={categoriaSeleccionada}></BotonCategoria>
+        </BotonContainer>
 
-      {videoMain.map((video) => (
-        <ContainerStyled key={video.id}>
-          <Card>
-            <TitleStyled>{video.Titulo}</TitleStyled>
-            <PStyled>{video.Descripcion}</PStyled>
-          </Card>
-          <BannerMain>
-            <PlayerStyled color={color}>
-              <img src={video.ImagenURL} alt="player" />
-            </PlayerStyled>
-          </BannerMain>
-        </ContainerStyled>
-      ))}
+        {videoMain.map((video) => (
+          <ContainerStyled key={video.id}>
+            <Card>
+              <TitleStyled>{video.Titulo}</TitleStyled>
+              <PStyled>{video.Descripcion}</PStyled>
+            </Card>
+            <BannerMain>
+              <PlayerStyled color={color}>
+                <img src={video.ImagenURL} alt="player" />
+              </PlayerStyled>
+            </BannerMain>
+          </ContainerStyled>
+        ))}
+      </InfoContainer>
+
     </BannerStyled>
   );
 }

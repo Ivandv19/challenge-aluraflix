@@ -4,14 +4,14 @@ import { useGlobalContext } from "../../../../contexts/GlobalContext";
 
 const Boton = styled.button`
   width: 180.13px;
-  height: 54px;
+  height: 45px;
   border-radius: 10px;
   color: white;
   background-color: transparent;
   border: 2px solid white;
   font-family: SourceSansProRegular;
-  font-weight: 900;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 17px;
   text-align: center;
   cursor: pointer;
   display: flex;

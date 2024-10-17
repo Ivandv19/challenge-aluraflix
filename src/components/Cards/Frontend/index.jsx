@@ -18,23 +18,19 @@ const FrontendContainer = styled.section`
 `;
 
 
-
 const CardsFrontendStyled = styled.section`
-width: 100%;
-height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+  width: 100%;
+
 
   @media (max-width: 755px) {
-    justify-content: center;
-    align-items: center;
-}
- 
+    justify-content: center; /* Alinea los ítems al centro */
+    align-items: center;     /* Alinea los ítems verticalmente */
+  }
 `;
+
 const CategoryStyled = styled.section`
   @media (max-width: 755px){
     width: 100%;
@@ -46,7 +42,7 @@ const Frontend = () => {
 
   // Obtener los videos filtrados por la categoría "FRONT END" del contexto global
   const { videosListadosFrontend } = useGlobalContext();
-  
+
 
   return (
     <FrontendContainer>

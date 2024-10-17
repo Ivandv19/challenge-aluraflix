@@ -25,13 +25,10 @@ const CategoryStyled = styled.section`
 `;
 
 const CardsFrontendStyled = styled.section`
-width: 100%;
-height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+  width: 100%;
 
   @media (max-width: 755px) {
     justify-content: center;
