@@ -7,6 +7,8 @@ import BotonCategoria from '../BotonCategoria';
 
 
 const FrontendContainer = styled.section`
+width: 100%;
+height: auto;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -26,8 +28,8 @@ const CardsFrontendStyled = styled.section`
 
 
   @media (max-width: 755px) {
-    justify-content: center; /* Alinea los ítems al centro */
-    align-items: center;     /* Alinea los ítems verticalmente */
+    display: flex;
+    flex-direction: column;
   }
 `;
 

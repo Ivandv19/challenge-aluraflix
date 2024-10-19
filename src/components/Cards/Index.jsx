@@ -12,6 +12,8 @@ gap: 93px;
 @media (max-width: 755px) {
     padding: 20px 10px;
     padding-bottom: 100px;
+    width: 100%;
+    height: auto;
 }
 
 `

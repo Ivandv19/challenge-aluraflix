@@ -17,25 +17,28 @@ const Edit = styled.div`
   cursor: pointer;
 
   @media (max-width: 755px) {
-    font-size: 14px;
+    gap: 2vw;
 
     img {
         width: 20px;
         height: 20px;
     }
+    p {
+    font-size: 3vw;
+    }
   }
 `;
 
-const BotonEdit = ({idVideo}) => {
+const BotonEdit = ({ idVideo }) => {
 
-    const { handleVideoSelec } = useGlobalContext();
+  const { handleVideoSelec } = useGlobalContext();
 
-    return (
-        <Edit onClick={() => handleVideoSelec(idVideo)} >
-            <img src="/img/icon-edit.png" alt="Icon edit" />
-            <p>EDITAR</p>
-        </Edit>
-    );
+  return (
+    <Edit onClick={() => handleVideoSelec(idVideo)} >
+      <img src="/img/icon-edit.png" alt="Icon edit" />
+      <p>EDITAR</p>
+    </Edit>
+  );
 };
 
 export default BotonEdit;

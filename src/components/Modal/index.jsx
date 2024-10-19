@@ -43,6 +43,10 @@ const CloseButton = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
+
+  @media (max-width: 755px){
+    width: 10vw;
+  }
 `;
 
 const ModalWrapper = styled.div`

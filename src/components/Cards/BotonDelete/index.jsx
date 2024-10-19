@@ -20,25 +20,31 @@ const Delete = styled.button`
 
 
   @media (max-width: 755px) {
-    font-size: 14px;
+    display: flex;
+    gap: 2vw;
+
 
     img {
         width: 20px;
         height: 20px;
+    }
+
+    p {
+    font-size: 3vw;
     }
   }
 `;
 
 const BotonDelete = ({ idVideo }) => {
 
-    const { handleDeleteClick } = useGlobalContext();
+  const { handleDeleteClick } = useGlobalContext();
 
-    return (
-        <Delete onClick={() => handleDeleteClick(idVideo)}>
-            <img src="/img/icon-delete.png" alt="Icon Delete" />
-            <p>BORRAR</p>
-        </Delete>
-    );
+  return (
+    <Delete onClick={() => handleDeleteClick(idVideo)}>
+      <img src="/img/icon-delete.png" alt="Icon Delete" />
+      <p>BORRAR</p>
+    </Delete>
+  );
 };
 
 export default BotonDelete;

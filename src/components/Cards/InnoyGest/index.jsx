@@ -31,9 +31,9 @@ const CardsFrontendStyled = styled.section`
   width: 100%;
 
   @media (max-width: 755px) {
-    justify-content: center;
-    align-items: center;
-}
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 // Componente que muestra los videos de la categoría "INNOVACIÓN Y GESTIÓN"

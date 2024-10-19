@@ -25,6 +25,13 @@ img {
   border-radius: 15px 15px 0px 0px;
   
 }
+
+@media (max-width: 755px) {
+    width: 100%;
+    height: auto;
+  }
+
+
 `;
 
 const DeleteyEdit = styled.div`
@@ -37,6 +44,11 @@ const DeleteyEdit = styled.div`
   box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
   background-color: #000000e5;
   justify-content: center;
+
+  @media (max-width: 755px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const DyEContainer = styled.div`
@@ -44,6 +56,13 @@ const DyEContainer = styled.div`
   flex-direction: row;
   gap: 70px;
   padding: 15px 0;
+
+  @media (max-width: 755px) {
+    width: 100%;
+    height: auto;
+    justify-content: space-evenly;
+    gap: 2vw;
+  }
 `;
 
 const categoryColors = {
