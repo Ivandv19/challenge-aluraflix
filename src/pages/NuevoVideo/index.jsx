@@ -235,25 +235,28 @@ flex-direction: row;
     height: auto;
   }
 `
-
 function NuevoVideo() {
+  // Extrae la función postVideo del contexto global para enviar datos
   const { postVideo } = useGlobalContext();
+
+  // Estados locales para cada uno de los campos del formulario
   const [titulo, setTitulo] = useState('');
   const [categoria, setCategoria] = useState('frontend');
   const [imagenURL, setImagenURL] = useState('');
   const [videoURL, setVideoURL] = useState('');
   const [descripcion, setDescripcion] = useState('');
 
-
+  // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previene la acción por defecto del formulario
 
-    // Validación de campos
+    // Validación de campos obligatorios
     if (!titulo || !imagenURL || !videoURL || !descripcion) {
       alert('Por favor, completa todos los campos obligatorios.');
       return;
     }
 
+    // Objeto que se enviará al servidor
     const newVideo = {
       Titulo: titulo,
       Categoria: categoria,
@@ -263,6 +266,7 @@ function NuevoVideo() {
     };
 
     try {
+      // Llamada a la función del contexto global para guardar el video
       await postVideo(newVideo);
 
       // Limpiar el formulario después de enviar los datos
@@ -272,6 +276,7 @@ function NuevoVideo() {
       setVideoURL('');
       setDescripcion('');
 
+      // Mensaje de confirmación
       alert('El video se ha guardado correctamente.');
     } catch (error) {
       console.error('Error al guardar el video:', error);
@@ -280,92 +285,88 @@ function NuevoVideo() {
   };
 
   return (
-    <>
-      <NuevosVideosContainer>
-        <TitulosContainer>
-          <H1>Nuevo video</H1>
-          <H2>Complete el formulario para crear una nueva tarjeta de video</H2>
-        </TitulosContainer>
+    <NuevosVideosContainer>
+      <TitulosContainer>
+        <H1>Nuevo video</H1>
+        <H2>Complete el formulario para crear una nueva tarjeta de video</H2>
+      </TitulosContainer>
 
-        <FormContainer onSubmit={handleSubmit}>
-          <BlocksStyled>
-            <H3>Crear Tarjeta</H3>
-          </BlocksStyled>
-
-          <BlocksStyled>
-            <DivStyled>
-              <InputLabel>Título</InputLabel>
-              <InputField
-                type="text"
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
-                placeholder="Ingrese el título del video"
-              />
-            </DivStyled>
-
-            <DivStyled>
-              <InputLabel>Categoría</InputLabel>
-              <SelectField
-                value={categoria}
-                onChange={(e) => setCategoria(e.target.value)}
-              >
-                <option value="FRONT END">Frontend</option>
-                <option value="BACK END">Backend</option>
-                <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestion</option>
-              </SelectField>
-            </DivStyled>
-          </BlocksStyled>
-
-          <BlocksStyled>
-            <DivStyled>
-              <InputLabel>Imagen (URL)</InputLabel>
-              <InputField
-                type="url"
-                value={imagenURL}
-                onChange={(e) => setImagenURL(e.target.value)}
-                placeholder="Ingrese la URL de la imagen"
-              />
-            </DivStyled>
-
-            <DivStyled>
-              <InputLabel>Video (URL)</InputLabel>
-              <InputField
-                type="url"
-                value={videoURL}
-                onChange={(e) => setVideoURL(e.target.value)}
-                placeholder="Ingrese la URL del video"
-              />
-            </DivStyled>
-          </BlocksStyled>
-
-          <BlocksStyled>
-            <DivStyled>
-              <InputLabel>Descripción</InputLabel>
-              <TextAreaField
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
-                rows={5}
-                placeholder="Ingrese una descripción del video"
-              />
-            </DivStyled>
-          </BlocksStyled>
-
-          <BlocksStyled>
-            <ButtonContainer>
-              <Button type="submit">Guardar</Button>
-              <Button type="button" onClick={() => {
-                setTitulo('');
-                setCategoria('frontend');
-                setImagenURL('');
-                setVideoURL('');
-                setDescripcion('');
-              }}>Limpiar</Button>
-            </ButtonContainer>
-
-          </BlocksStyled>
-        </FormContainer>
-      </NuevosVideosContainer>
-    </>
+      <FormContainer onSubmit={handleSubmit}>
+        <BlocksStyled>
+          <H3>Crear Tarjeta</H3>
+        </BlocksStyled>
+        <BlocksStyled>
+          {/* Sección de Título y Categoría */}
+          <DivStyled>
+            <InputLabel>Título</InputLabel>
+            <InputField
+              type="text"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)} // Actualiza el estado del título
+              placeholder="Ingrese el título del video"
+            />
+          </DivStyled>
+          <DivStyled>
+            <InputLabel>Categoría</InputLabel>
+            <SelectField
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)} // Actualiza el estado de la categoría
+            >
+              <option value="FRONT END">Frontend</option>
+              <option value="BACK END">Backend</option>
+              <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestion</option>
+            </SelectField>
+          </DivStyled>
+        </BlocksStyled>
+        <BlocksStyled>
+          {/* Sección de Imagen y Video */}
+          <DivStyled>
+            <InputLabel>Imagen (URL)</InputLabel>
+            <InputField
+              type="url"
+              value={imagenURL}
+              onChange={(e) => setImagenURL(e.target.value)} // Actualiza el estado de la URL de la imagen
+              placeholder="Ingrese la URL de la imagen"
+            />
+          </DivStyled>
+          <DivStyled>
+            <InputLabel>Video (URL)</InputLabel>
+            <InputField
+              type="url"
+              value={videoURL}
+              onChange={(e) => setVideoURL(e.target.value)} // Actualiza el estado de la URL del video
+              placeholder="Ingrese la URL del video"
+            />
+          </DivStyled>
+        </BlocksStyled>
+        <BlocksStyled>
+          {/* Sección de Descripción */}
+          <DivStyled>
+            <InputLabel>Descripción</InputLabel>
+            <TextAreaField
+              value={descripcion}
+              onChange={(e) => setDescripcion(e.target.value)} // Actualiza el estado de la descripción
+              rows={5}
+              placeholder="Ingrese una descripción del video"
+            />
+          </DivStyled>
+        </BlocksStyled>
+        <BlocksStyled>
+          <ButtonContainer>
+            {/* Botón de Guardar */}
+            <Button type="submit">Guardar</Button>
+            {/* Botón de Limpiar, que restablece todos los campos */}
+            <Button type="button" onClick={() => {
+              setTitulo('');
+              setCategoria('frontend');
+              setImagenURL('');
+              setVideoURL('');
+              setDescripcion('');
+            }}>Limpiar</Button>
+          </ButtonContainer>
+        </BlocksStyled>
+      </FormContainer>
+    </NuevosVideosContainer>
   );
 }
 

@@ -42,18 +42,18 @@ const Boton = styled.button`
 `;
 
 
-
 const BotonesNav = ({ boton, children }) => {
+  // Desestructuramos el contexto global para acceder a las funciones y estados necesarios
   const { handleButtonClick, botonSeleccionado } = useGlobalContext();
 
-
   return (
-    <>
-      <Boton onClick={() => handleButtonClick(boton)}
-        isSelected={botonSeleccionado === boton}>
-        {children}
-      </Boton>
-    </>
+    // Botón estilizado que ejecuta la función handleButtonClick al hacer clic
+    <Boton 
+      onClick={() => handleButtonClick(boton)} // Llama a handleButtonClick con el valor del botón clickeado
+      isSelected={botonSeleccionado === boton} // Aplica un estilo adicional si el botón está seleccionado
+    >
+      {children}  {/* Los hijos del componente BotonesNav (usualmente texto o iconos dentro del botón) */}
+    </Boton>
   );
 };
 

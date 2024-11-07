@@ -110,48 +110,57 @@ const InfoContainer = styled.section`
 
 const Banner = () => {
 
-  const { videos, categoriaSeleccionada, setCategoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest } = useGlobalContext();
+  // Obtenemos los valores y funciones del contexto global
+  const { 
+    videos, 
+    categoriaSeleccionada, 
+    setCategoriaSeleccionada, 
+    videosListadosFrontend, 
+    videosListadosBackend, 
+    videosListadosInnoyGest 
+  } = useGlobalContext();
 
-  const [videoMain, setVideoMain] = useState([]);
+  const [videoMain, setVideoMain] = useState([]); // Estado para el video principal que se mostrará en el banner
 
-  // Lista de categorías
+  // Lista de categorías disponibles
   const categorias = ['FRONT END', 'BACK END', 'INNOVACIÓN Y GESTIÓN'];
 
-  // Ref para almacenar el identificador del intervalo
+  // Ref para almacenar el identificador del intervalo (utilizado para cambiar automáticamente la categoría)
   const intervalRef = useRef(null);
 
-  // Cambiar categoría automáticamente cada 10 segundos
+  // Efecto para cambiar la categoría automáticamente cada 10 segundos
   useEffect(() => {
     // Función para iniciar el intervalo
     const startInterval = () => {
       if (intervalRef.current) {
-        clearInterval(intervalRef.current);
+        clearInterval(intervalRef.current); // Limpiamos cualquier intervalo previo
       }
 
       intervalRef.current = setInterval(() => {
+        // Cambiar la categoría seleccionada
         setCategoriaSeleccionada(prevCategoria => {
-          const currentIndex = categorias.indexOf(prevCategoria);
-          const nextIndex = (currentIndex + 1) % categorias.length;
-          return categorias[nextIndex];
+          const currentIndex = categorias.indexOf(prevCategoria); // Encontramos el índice de la categoría actual
+          const nextIndex = (currentIndex + 1) % categorias.length; // Calculamos el índice siguiente, ciclando entre las categorías
+          return categorias[nextIndex]; // Establecemos la siguiente categoría
         });
       }, 10000); // 10000 ms = 10 segundos
     };
 
-    startInterval(); // Inicia el intervalo al montar el componente
+    startInterval(); // Iniciamos el intervalo al montar el componente
 
-    // Limpiar intervalo al desmontar el componente
+    // Limpiar el intervalo cuando el componente se desmonte para evitar efectos secundarios
     return () => {
       if (intervalRef.current) {
-        clearInterval(intervalRef.current);
+        clearInterval(intervalRef.current); // Limpiamos el intervalo al desmontar
       }
     };
-  }, [setCategoriaSeleccionada, categorias]);
+  }, [setCategoriaSeleccionada, categorias]); // Dependencias: se ejecuta al montar el componente
 
-  // Efecto para actualizar videoMain cuando cambia categoriaSeleccionada
+  // Efecto para actualizar el video principal cada vez que cambie la categoría seleccionada
   useEffect(() => {
     let selectedVideos = [];
 
-    // Seleccionar el array adecuado basado en categoriaSeleccionada
+    // Seleccionamos el array adecuado de videos basado en la categoría seleccionada
     switch (categoriaSeleccionada) {
       case 'FRONT END':
         selectedVideos = videosListadosFrontend;
@@ -163,47 +172,53 @@ const Banner = () => {
         selectedVideos = videosListadosInnoyGest;
         break;
       default:
-        selectedVideos = [];
+        selectedVideos = []; // Si no hay categoría, dejamos el array vacío
     }
-    // Establecer el primer video del array seleccionado
+    
+    // Establecemos el primer video del array seleccionado como el video principal
     if (selectedVideos.length > 0) {
       setVideoMain([selectedVideos[0]]);
     } else {
+      // Si no hay videos en la categoría seleccionada, establecemos un video por defecto
       const initialBannerVideo = videos.filter(video => video.id === '0');
       setVideoMain(initialBannerVideo);
     }
-  }, [categoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest]); // Incluye todas las dependencias necesarias
+  }, [categoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest]); // Se ejecuta cada vez que cambian las dependencias
 
+  // Colores para cada categoría
   const categoryColors = {
     'FRONT END': '#6bd1ff', // Azul claro
     'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
     'BACK END': '#00C86F', // Verde
   };
 
-  const color = categoryColors[categoriaSeleccionada] || '#6bd1ff'; // Color predeterminado
+  // Se asigna el color correspondiente según la categoría seleccionada
+  const color = categoryColors[categoriaSeleccionada] || '#6bd1ff'; // Azul claro como color predeterminado
 
   return (
     <BannerStyled>
       <InfoContainer>
         <BotonContainer>
+          {/* Mostrar el botón de la categoría actual */}
           <BotonCategoria Categoria={categoriaSeleccionada}></BotonCategoria>
         </BotonContainer>
 
+        {/* Mostrar los detalles del video principal */}
         {videoMain.map((video) => (
           <ContainerStyled key={video.id}>
             <Card>
-              <TitleStyled>{video.Titulo}</TitleStyled>
-              <PStyled>{video.Descripcion}</PStyled>
+              <TitleStyled>{video.Titulo}</TitleStyled> {/* Título del video */}
+              <PStyled>{video.Descripcion}</PStyled> {/* Descripción del video */}
             </Card>
             <BannerMain>
+              {/* Componente para mostrar el video con el color correspondiente */}
               <PlayerStyled color={color}>
-                <img src={video.ImagenURL} alt="player" />
+                <img src={video.ImagenURL} alt="player" /> {/* Imagen representativa del video */}
               </PlayerStyled>
             </BannerMain>
           </ContainerStyled>
         ))}
       </InfoContainer>
-
     </BannerStyled>
   );
 }

@@ -288,17 +288,18 @@ const categoryColors = {
 
 
 const Modal = () => {
+  // Accedemos al estado global que contiene información sobre el modal, el video a editar, y la función para cerrar el modal y editar el video
   const { Modal, closeModal, videoAEditar, editVideo } = useGlobalContext();
 
-  // Estado local para los inputs
+  // Estado local para los inputs del formulario
   const [title, setTitle] = useState(videoAEditar.Titulo || '');
   const [category, setCategory] = useState(videoAEditar.Categoria || '');
   const [image, setImage] = useState(videoAEditar.ImagenURL || '');
   const [video, setVideo] = useState(videoAEditar.VideoURL || '');
   const [description, setDescription] = useState(videoAEditar.Descripcion || '');
 
+  // Usamos useEffect para actualizar el estado local cuando cambie el video a editar
   useEffect(() => {
-    // Actualizar el estado cuando cambie el video a editar
     setTitle(videoAEditar.Titulo || '');
     setCategory(videoAEditar.Categoria || '');
     setImage(videoAEditar.ImagenURL || '');
@@ -306,21 +307,16 @@ const Modal = () => {
     setDescription(videoAEditar.Descripcion || '');
   }, [videoAEditar]);
 
-
-  const color = categoryColors[category]; // Color predeterminado
-  console.log(category);
-
-
-
+  const color = categoryColors[category]; // Color asociado con la categoría del video
 
   const handleSave = async () => {
-    // Validación de campos
+    // Validación de campos antes de guardar
     if (!title || !image || !video) {
       alert('Por favor, completa todos los campos obligatorios.');
       return;
     }
 
-    // Lógica para guardar el formulario
+    // Lógica para guardar los cambios en el formulario
     try {
       const updatedVideo = {
         Titulo: title,
@@ -329,12 +325,12 @@ const Modal = () => {
         VideoURL: video,
         Descripcion: description
       };
-      // Llama a la función para guardar los cambios en la base de datos
+      // Llamada a la función que actualiza el video en la base de datos
       await editVideo(videoAEditar.id, updatedVideo);
-      closeModal();
+      closeModal(); // Cierra el modal después de guardar
     } catch (error) {
       console.error('Error al guardar el formulario:', error);
-      // Manejar el error
+      // Manejar el error si ocurre
     }
   };
 
@@ -343,14 +339,17 @@ const Modal = () => {
       {Modal && (
         <ModalWrapper>
           <ModalContent color={color}>
+            {/* Botón para cerrar el modal */}
             <CloseButton aria-label="Close" onClick={closeModal}></CloseButton>
+            {/* Contenedor del formulario de edición */}
             <FormularioContainer>
               <Formulario>
                 <HeaderStyled>
                   <Title color={color}>EDITAR VIDEO</Title>
                 </HeaderStyled>
-
+                {/* Sección con los campos del formulario */}
                 <SectionStyled>
+                  {/* Campo para el título */}
                   <LabelStyled htmlFor="title">Título</LabelStyled>
                   <InputStyled
                     type="text"
@@ -360,7 +359,7 @@ const Modal = () => {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
-
+                  {/* Campo para la categoría */}
                   <LabelStyled htmlFor="category">Categoría</LabelStyled>
                   <SelectStyled
                     id="category"
@@ -368,13 +367,12 @@ const Modal = () => {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     color={color}
-
                   >
                     <option value="FRONT END">Front End</option>
                     <option value="BACK END">Back End</option>
                     <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestión</option>
                   </SelectStyled>
-
+                  {/* Campo para la imagen */}
                   <LabelStyled htmlFor="image">Imagen</LabelStyled>
                   <InputStyled
                     type="url"
@@ -384,7 +382,7 @@ const Modal = () => {
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                   />
-
+                  {/* Campo para el video */}
                   <LabelStyled htmlFor="video">Video</LabelStyled>
                   <InputStyled
                     type="url"
@@ -394,7 +392,7 @@ const Modal = () => {
                     value={video}
                     onChange={(e) => setVideo(e.target.value)}
                   />
-
+                  {/* Campo para la descripción */}
                   <LabelStyled htmlFor="description">Descripción</LabelStyled>
                   <TextareaStyled
                     id="description"
@@ -404,7 +402,7 @@ const Modal = () => {
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </SectionStyled>
-
+                {/* Footer con los botones para guardar o cancelar */}
                 <FooterStyled>
                   <ButtonStyled type="button" onClick={handleSave} color={color}>GUARDAR</ButtonStyled>
                   <ButtonStyled type="button" onClick={closeModal} color={color}>

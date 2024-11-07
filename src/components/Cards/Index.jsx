@@ -20,14 +20,11 @@ gap: 93px;
 
 const Cards = () => {
     return (
-        <>
             <CardsContainer>
                 <Frontend />
                 <BackEnd />
                 <InnoyGest />
             </CardsContainer>
-
-        </>
     )
 }
 

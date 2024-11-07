@@ -30,12 +30,15 @@ const Edit = styled.div`
 `;
 
 const BotonEdit = ({ idVideo }) => {
-
+  // Desestructuramos 'handleVideoSelec' desde el contexto global.
   const { handleVideoSelec } = useGlobalContext();
 
   return (
-    <Edit onClick={() => handleVideoSelec(idVideo)} >
+    // Componente 'Edit' estilizado que maneja el clic para seleccionar un video para editar
+    <Edit onClick={() => handleVideoSelec(idVideo)}>
+      {/* Icono de editar, representado con una imagen */}
       <img src="/img/icon-edit.png" alt="Icon edit" />
+      {/* Texto descriptivo que acompaña al icono */}
       <p>EDITAR</p>
     </Edit>
   );

@@ -73,20 +73,28 @@ const categoryColors = {
 
 
 function Card({ src, idVideo, alt, Categoria }) {
-  const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado
+  // Se determina el color basado en la categoría del video, o se usa un color predeterminado
+  const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado si no se encuentra la categoría
+
   return (
     <CardStyled>
+      {/* Componente que contiene el video con el color correspondiente a su categoría */}
       <VideoCard color={color}>
+        {/* Imagen del video */}
         <img src={src} alt={alt} />
       </VideoCard>
+
+      {/* Sección que contiene los botones de eliminar y editar */}
       <DeleteyEdit color={color}>
         <DyEContainer>
+          {/* Botón para eliminar el video */}
           <BotonDelete idVideo={idVideo} />
+          {/* Botón para editar el video */}
           <BotonEdit idVideo={idVideo} />
         </DyEContainer>
       </DeleteyEdit>
     </CardStyled>
-  )
+  );
 }
 
-export default Card
+export default Card;

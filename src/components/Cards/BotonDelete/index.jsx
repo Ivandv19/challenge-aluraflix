@@ -36,12 +36,15 @@ const Delete = styled.button`
 `;
 
 const BotonDelete = ({ idVideo }) => {
-
+  // Desestructuramos 'handleDeleteClick' desde el contexto global.
   const { handleDeleteClick } = useGlobalContext();
 
   return (
+    // Componente 'Delete' que maneja el clic del botón para eliminar un video
     <Delete onClick={() => handleDeleteClick(idVideo)}>
+      {/* Icono de borrar, se usa una imagen como icono para el botón */}
       <img src="/img/icon-delete.png" alt="Icon Delete" />
+      {/* Texto que acompaña al icono */}
       <p>BORRAR</p>
     </Delete>
   );

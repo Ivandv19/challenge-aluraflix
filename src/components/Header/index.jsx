@@ -42,13 +42,18 @@ const ImgContainer = styled.div`
 `;
 
 const Header = () => {
+  // Accedemos al estado global que contiene el botón seleccionado
   const { botonSeleccionado } = useGlobalContext();
 
   return (
+    // Componente estilizado para el encabezado, con un estilo condicional dependiendo del botón seleccionado
     <HeaderStyled selected={botonSeleccionado === 'home'}>
+      {/* Contenedor para la imagen del logo */}
       <ImgContainer>
         <img src="/img/LogoMain.png" alt="logo" />
       </ImgContainer>
+
+      {/* Renderizamos el componente Nav que contiene la barra de navegación */}
       <Nav />
     </HeaderStyled>
   );

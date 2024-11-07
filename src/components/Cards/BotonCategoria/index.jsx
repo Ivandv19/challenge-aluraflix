@@ -32,13 +32,15 @@ const categoryColors = {
 };
 
 function BotonCategoria({ Categoria }) {
-  const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado
+  // Definimos el color basado en la categoría, usando un color predeterminado si no se encuentra en 'categoryColors'
+  const color = categoryColors[Categoria] || '#6bd1ff'; // Color predeterminado es azul claro
 
+  // Obtenemos la función 'seleccionarCategoria' del contexto global
   const { seleccionarCategoria } = useGlobalContext();
-
 
   return (
     <ButtonStyled color={color} onClick={() => seleccionarCategoria(Categoria)}>
+      {/* Mostramos el nombre de la categoría dentro del botón */}
       {Categoria}
     </ButtonStyled>
   );
