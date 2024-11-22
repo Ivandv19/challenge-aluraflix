@@ -20,14 +20,14 @@ Aluraflix es una aplicación web diseñada para gestionar y explorar una colecci
 
 ## Tecnologías Utilizadas
 
-- **HTML**
-- **CSS**
-- **JavaScript**
-- **React**
-- **Styled Components**
-- **My JSON Server**
-- **Node.js**
-- **Vite**
+- HTML
+- CSS
+- JavaScript
+- React
+- Styled Components
+- My JSON Server
+- Node.js
+- Vite
 
 ## Instalación
    
