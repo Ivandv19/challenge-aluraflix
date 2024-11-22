@@ -1,5 +1,7 @@
 # Aluraflix
 
+## Descripción
+
 Aluraflix es una aplicación web diseñada para gestionar y explorar una colección de videos. La aplicación permite a los usuarios visualizar videos filtrados por categoría, eliminar y editar videos, y crear nuevos videos mediante un formulario.
 
 ## Características
