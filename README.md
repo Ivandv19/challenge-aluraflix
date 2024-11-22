@@ -53,7 +53,7 @@ npm run dev
 
 ## Despliegue
 
-- El sitio web está desplegado en Vercel y se puede acceder a través del siguiente enlace: [Aluraflix](https://alura-flix-flax.vercel.app/).
+- El sitio web está desplegado en Vercel y se puede acceder a través del siguiente enlace: [Aluraflix]( https://alura-flix-flax.vercel.app/ ).
 
 ## Licencia
 
