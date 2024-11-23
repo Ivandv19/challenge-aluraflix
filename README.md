@@ -59,8 +59,12 @@ npm run dev
 
 -Este proyecto está bajo la Licencia MIT.
 
+## Imagen
+
+![alura-flix-flax vercel app_]( https://github.com/user-attachments/assets/6cb0ea0a-9db9-45f1-9b53-2ba995adb3e1 )
+
 ## Proyecto En Portafolio Web
 
--Este repositorio es parte de los proyectos mostrados en mi portafolio web
+-Este proyecto es parte de los proyectos mostrados en mi portafolio web
 
 
