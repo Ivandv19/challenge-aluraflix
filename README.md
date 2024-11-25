@@ -61,9 +61,9 @@ npm run dev
 
 ## Imagen
 
-![alura-flix-flax vercel app_ (1)]( https://github.com/user-attachments/assets/d9ad4ddb-ae3d-484e-8636-a761ec0324b8 )
+![aluraflix](https://github.com/user-attachments/assets/4d2f3505-201b-4f62-acee-0205d109969d)
 
-## Proyecto En Portafolio Web
+## Proyecto En Portafolio Web ## 4
 
 -Este proyecto es parte de los proyectos mostrados en mi portafolio web
 
