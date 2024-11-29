@@ -1,4 +1,4 @@
-# Aluraflix
+# Alura Flix
 
 ## Descripción
 
