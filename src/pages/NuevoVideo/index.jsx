@@ -9,6 +9,11 @@ const NuevosVideosContainer = styled.div`
   padding: 120px 0 50px 0;
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 
   @media (max-width: 599px) {
     padding: 0;
@@ -23,12 +28,16 @@ const TitulosContainer = styled.section`
 `;
 
 const FormContainer = styled.form`
-  width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+  max-width: 80%;
   height: auto;
-  padding: 20px 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+  gap: 50px;
+
+
+
 
   @media (min-width: 600px) and (max-width: 1199px){
     padding: 20px 20px;
@@ -41,6 +50,7 @@ const FormContainer = styled.form`
     width: 100%;
     height: auto;
     gap: 20px;
+    max-width: 100%;  /* Elimina el max-width en pantallas pequeñas */
   }
 
 
@@ -96,8 +106,8 @@ const SelectField = styled.select`
 `;
 
 const TextAreaField = styled.textarea`
-   width: 573px;
-   height: 220px;
+   width: 100%;
+   min-height: 220px;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
@@ -161,6 +171,7 @@ justify-content: space-around;
   h3{
   padding-bottom: 50px;
 }
+
 }
 
 @media (max-width: 599px) {
@@ -235,6 +246,33 @@ flex-direction: row;
     height: auto;
   }
 `
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: auto auto;  
+  gap: 20px; 
+
+  @media (min-width: 600px) and (max-width: 1199px) {
+  display: flex;
+ 
+ flex-direction: column;
+}
+
+@media (max-width: 599px) {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+  }
+`
+
+
+const DescriptionContainer = styled.div`
+  width: 100%;
+  height: auto;
+`
+
+
 function NuevoVideo() {
   // Extrae la función postVideo del contexto global para enviar datos
   const { postVideo } = useGlobalContext();
@@ -295,7 +333,9 @@ function NuevoVideo() {
         <BlocksStyled>
           <H3>Crear Tarjeta</H3>
         </BlocksStyled>
-        <BlocksStyled>
+        <GridContainer>
+
+
           {/* Sección de Título y Categoría */}
           <DivStyled>
             <InputLabel>Título</InputLabel>
@@ -317,8 +357,8 @@ function NuevoVideo() {
               <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestion</option>
             </SelectField>
           </DivStyled>
-        </BlocksStyled>
-        <BlocksStyled>
+
+
           {/* Sección de Imagen y Video */}
           <DivStyled>
             <InputLabel>Imagen (URL)</InputLabel>
@@ -338,8 +378,10 @@ function NuevoVideo() {
               placeholder="Ingrese la URL del video"
             />
           </DivStyled>
-        </BlocksStyled>
-        <BlocksStyled>
+
+        </GridContainer>
+        <DescriptionContainer>
+
           {/* Sección de Descripción */}
           <DivStyled>
             <InputLabel>Descripción</InputLabel>
@@ -350,7 +392,9 @@ function NuevoVideo() {
               placeholder="Ingrese una descripción del video"
             />
           </DivStyled>
-        </BlocksStyled>
+        </DescriptionContainer>
+
+
         <BlocksStyled>
           <ButtonContainer>
             {/* Botón de Guardar */}
@@ -366,6 +410,7 @@ function NuevoVideo() {
           </ButtonContainer>
         </BlocksStyled>
       </FormContainer>
+
     </NuevosVideosContainer>
   );
 }
