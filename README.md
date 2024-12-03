@@ -59,7 +59,7 @@ npm run dev
 
 ## Despliegue
 
-- El sitio web está desplegado en Vercel y se puede acceder a través del siguiente enlace: [Aluraflix](https://alura-flix-flax.vercel.app/).
+- El sitio web está desplegado en Vercel y se puede acceder a través del siguiente enlace: [Aluraflix]( https://alura-flix-flax.vercel.app/ ).
 
 ## Licencia
 
@@ -67,8 +67,8 @@ npm run dev
 
 ## Imagen
 
-![aluraflix](https://github.com/user-attachments/assets/4d2f3505-201b-4f62-acee-0205d109969d)
+![aluraflix]( https://github.com/user-attachments/assets/4d2f3505-201b-4f62-acee-0205d109969d )
 
-## Proyecto En Portafolio Web ##4
+## Proyecto En Portafolio Web ##2
 
 -Este proyecto es parte de los proyectos mostrados en mi portafolio web
