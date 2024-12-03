@@ -24,7 +24,10 @@ const ImgContainer = styled.img`
 
   // Cambiar imagen en hover
   &:hover {
-    content: url(${(props) => (props.botonSeleccionado === props.boton ? `/img/icono-${props.boton}-activo.png` : `/img/icono-${props.boton}-activo.png`)});
+    content: url(${(props) =>
+      props.botonSeleccionado === props.boton
+        ? `/img/icono-${props.boton}-activo.png`
+        : `/img/icono-${props.boton}-activo.png`});
   }
 `;
 
@@ -34,11 +37,10 @@ const StyledLink = styled(Link)`
 `;
 
 const Pstyled = styled.p`
-
-
   @media (max-width: 600px) {
     font-weight: 900;
-    display: ${(props) => (props.botonSeleccionado === props.boton ? 'block' : 'none')};
+    display: ${(props) =>
+      props.botonSeleccionado === props.boton ? 'block' : 'none'};
     font-size: 15px;
   }
 `;
@@ -56,7 +58,11 @@ const Nav = () => {
         <BotonesNav boton="home">
           {/* Condicional para cambiar la imagen según el estado del botón seleccionado */}
           <ImgContainer
-            src={botonSeleccionado === 'home' ? '/img/icono-home-activo.png' : '/img/icono-home.png'}
+            src={
+              botonSeleccionado === 'home'
+                ? '/img/icono-home-activo.png'
+                : '/img/icono-home.png'
+            }
             botonSeleccionado={botonSeleccionado}
             boton="home"
           />
@@ -73,7 +79,11 @@ const Nav = () => {
         <BotonesNav boton="nuevo-video">
           {/* Condicional para cambiar la imagen según el estado del botón seleccionado */}
           <ImgContainer
-            src={botonSeleccionado === 'nuevo-video' ? '/img/icono-nuevo-video-activo.png' : '/img/icono-nuevo-video.png'}
+            src={
+              botonSeleccionado === 'nuevo-video'
+                ? '/img/icono-nuevo-video-activo.png'
+                : '/img/icono-nuevo-video.png'
+            }
             botonSeleccionado={botonSeleccionado}
             boton="nuevo-video"
           />

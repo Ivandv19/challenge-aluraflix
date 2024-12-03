@@ -28,17 +28,15 @@ const BannerStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  
 
   @media (min-width: 756px) and (max-width: 1199px) {
     padding: 150px 50px 100px 50px;
     gap: 50px;
   }
 
-  @media (max-width: 755px){
+  @media (max-width: 755px) {
     display: none;
   }
- 
 `;
 
 const Card = styled.div`
@@ -50,9 +48,8 @@ const Card = styled.div`
 `;
 
 const BannerMain = styled.div`
-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
 `;
-
 
 const TitleStyled = styled.h2`
   font-family: 'Roboto', sans-serif;
@@ -66,7 +63,6 @@ const PStyled = styled.p`
   font-weight: 300;
   font-size: 18px;
   color: #f5f5f5;
-  
 `;
 
 const ContainerStyled = styled.section`
@@ -80,7 +76,6 @@ const ContainerStyled = styled.section`
     gap: 0;
     justify-content: space-between;
   }
-
 `;
 
 const BotonContainer = styled.div`
@@ -88,36 +83,36 @@ const BotonContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   animation: ${zoomIn} 0.5s ease-out;
-  @media (min-width: 600px) and (max-width: 1199px){
+  @media (min-width: 600px) and (max-width: 1199px) {
     justify-content: center;
   }
-`
+`;
 
 const PlayerStyled = styled.div`
-border-radius: 15px 15px 15px 15px;
-box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
-
-img {
   border-radius: 15px 15px 15px 15px;
-}
+  box-shadow: ${(props) =>
+    props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent'};
+
+  img {
+    border-radius: 15px 15px 15px 15px;
+  }
 `;
 
 const InfoContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`
+`;
 
 const Banner = () => {
-
   // Obtenemos los valores y funciones del contexto global
-  const { 
-    videos, 
-    categoriaSeleccionada, 
-    setCategoriaSeleccionada, 
-    videosListadosFrontend, 
-    videosListadosBackend, 
-    videosListadosInnoyGest 
+  const {
+    videos,
+    categoriaSeleccionada,
+    setCategoriaSeleccionada,
+    videosListadosFrontend,
+    videosListadosBackend,
+    videosListadosInnoyGest,
   } = useGlobalContext();
 
   const [videoMain, setVideoMain] = useState([]); // Estado para el video principal que se mostrará en el banner
@@ -138,7 +133,7 @@ const Banner = () => {
 
       intervalRef.current = setInterval(() => {
         // Cambiar la categoría seleccionada
-        setCategoriaSeleccionada(prevCategoria => {
+        setCategoriaSeleccionada((prevCategoria) => {
           const currentIndex = categorias.indexOf(prevCategoria); // Encontramos el índice de la categoría actual
           const nextIndex = (currentIndex + 1) % categorias.length; // Calculamos el índice siguiente, ciclando entre las categorías
           return categorias[nextIndex]; // Establecemos la siguiente categoría
@@ -174,21 +169,26 @@ const Banner = () => {
       default:
         selectedVideos = []; // Si no hay categoría, dejamos el array vacío
     }
-    
+
     // Establecemos el primer video del array seleccionado como el video principal
     if (selectedVideos.length > 0) {
       setVideoMain([selectedVideos[0]]);
     } else {
       // Si no hay videos en la categoría seleccionada, establecemos un video por defecto
-      const initialBannerVideo = videos.filter(video => video.id === '0');
+      const initialBannerVideo = videos.filter((video) => video.id === '0');
       setVideoMain(initialBannerVideo);
     }
-  }, [categoriaSeleccionada, videosListadosFrontend, videosListadosBackend, videosListadosInnoyGest]); // Se ejecuta cada vez que cambian las dependencias
+  }, [
+    categoriaSeleccionada,
+    videosListadosFrontend,
+    videosListadosBackend,
+    videosListadosInnoyGest,
+  ]); // Se ejecuta cada vez que cambian las dependencias
 
   // Colores para cada categoría
   const categoryColors = {
     'FRONT END': '#6bd1ff', // Azul claro
-    'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
+    'INNOVACIÓN Y GESTIÓN': '#FFBA05', // Amarillo
     'BACK END': '#00C86F', // Verde
   };
 
@@ -208,12 +208,14 @@ const Banner = () => {
           <ContainerStyled key={video.id}>
             <Card>
               <TitleStyled>{video.Titulo}</TitleStyled> {/* Título del video */}
-              <PStyled>{video.Descripcion}</PStyled> {/* Descripción del video */}
+              <PStyled>{video.Descripcion}</PStyled>{' '}
+              {/* Descripción del video */}
             </Card>
             <BannerMain>
               {/* Componente para mostrar el video con el color correspondiente */}
               <PlayerStyled color={color}>
-                <img src={video.ImagenURL} alt="player" /> {/* Imagen representativa del video */}
+                <img src={video.ImagenURL} alt="player" />{' '}
+                {/* Imagen representativa del video */}
               </PlayerStyled>
             </BannerMain>
           </ContainerStyled>
@@ -221,6 +223,6 @@ const Banner = () => {
       </InfoContainer>
     </BannerStyled>
   );
-}
+};
 
 export default Banner;

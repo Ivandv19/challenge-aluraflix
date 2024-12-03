@@ -1,9 +1,7 @@
-
 import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
-
 
 const BackendContainer = styled.section`
   display: flex;
@@ -13,11 +11,11 @@ const BackendContainer = styled.section`
   @media (max-width: 755px) {
     justify-content: center;
     align-items: center;
-}
+  }
 `;
 
 const CategoryStyled = styled.section`
-  @media (max-width: 755px){
+  @media (max-width: 755px) {
     width: 100%;
     height: auto;
   }
@@ -37,7 +35,6 @@ const CardsBackendStyled = styled.section`
 
 // Componente que muestra los videos de la categoría "BACK END"
 const BackEnd = () => {
-
   // Obtener los videos filtrados por la categoría "BACK END" del contexto global
   const { videosListadosBackend } = useGlobalContext();
 
@@ -51,7 +48,7 @@ const BackEnd = () => {
       </CategoryStyled>
       <CardsBackendStyled>
         {/*Mapear los videos de la categoría "BACK END" y mostrarlos en tarjetas */}
-        {videosListadosBackend.map(video => (
+        {videosListadosBackend.map((video) => (
           <Card
             key={video.id}
             src={video.ImagenURL}

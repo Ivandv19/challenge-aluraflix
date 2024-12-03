@@ -1,10 +1,7 @@
-
 import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
-
-
 
 const FrontendContainer = styled.section`
   display: flex;
@@ -14,11 +11,11 @@ const FrontendContainer = styled.section`
   @media (max-width: 755px) {
     justify-content: center;
     align-items: center;
-}
+  }
 `;
 
 const CategoryStyled = styled.section`
-  @media (max-width: 755px){
+  @media (max-width: 755px) {
     width: 100%;
     height: auto;
   }
@@ -38,7 +35,6 @@ const CardsFrontendStyled = styled.section`
 
 // Componente que muestra los videos de la categoría "INNOVACIÓN Y GESTIÓN"
 const InnoyGest = () => {
-
   // Obtener los videos filtrados por la categoría "INNOVACIÓN Y GESTIÓN" del contexto global
   const { videosListadosInnoyGest } = useGlobalContext();
 
@@ -52,7 +48,7 @@ const InnoyGest = () => {
       </CategoryStyled>
       <CardsFrontendStyled>
         {/* Mapear los videos de la categoría "INNOVACIÓN Y GESTIÓN" y mostrarlos en tarjetas */}
-        {videosListadosInnoyGest.map(video => (
+        {videosListadosInnoyGest.map((video) => (
           <Card
             key={video.id}
             src={video.ImagenURL}

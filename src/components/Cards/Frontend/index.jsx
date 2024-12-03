@@ -1,14 +1,11 @@
-
 import styled from 'styled-components';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Card from '../Card';
 import BotonCategoria from '../BotonCategoria';
 
-
-
 const FrontendContainer = styled.section`
-width: 100%;
-height: auto;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -16,16 +13,14 @@ height: auto;
   @media (max-width: 755px) {
     justify-content: center;
     align-items: center;
-}
+  }
 `;
-
 
 const CardsFrontendStyled = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 20px;
   width: 100%;
-
 
   @media (max-width: 755px) {
     display: flex;
@@ -34,17 +29,15 @@ const CardsFrontendStyled = styled.section`
 `;
 
 const CategoryStyled = styled.section`
-  @media (max-width: 755px){
+  @media (max-width: 755px) {
     width: 100%;
     height: auto;
   }
 `;
 
 const Frontend = () => {
-
   // Obtener los videos filtrados por la categoría "FRONT END" del contexto global
   const { videosListadosFrontend } = useGlobalContext();
-
 
   return (
     <FrontendContainer>

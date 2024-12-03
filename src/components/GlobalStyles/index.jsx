@@ -1,8 +1,8 @@
-import { createGlobalStyle } from "styled-components";
-import SourceSansProRegular from "./fonts/SourceSansPro-Regular.otf"
-import SourceSansProBold from "./fonts/SourceSansPro-Bold.otf"
+import { createGlobalStyle } from 'styled-components';
+import SourceSansProRegular from './fonts/SourceSansPro-Regular.otf';
+import SourceSansProBold from './fonts/SourceSansPro-Bold.otf';
 
-const GlobalStyles= createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: "SourceSansProRegular";
   src: local("Source Sans Pro Regular"), local("SourceSansProRegular"), url(${SourceSansProRegular});
@@ -166,7 +166,6 @@ html {
   [hidden] {
     display: none;
   }
-`
+`;
 
-
-export default GlobalStyles
+export default GlobalStyles;

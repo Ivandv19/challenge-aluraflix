@@ -1,7 +1,5 @@
-
-import styled from "styled-components";
-import { useGlobalContext } from "../../../contexts/GlobalContext";
-
+import styled from 'styled-components';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 
 const Edit = styled.div`
   display: flex;
@@ -20,11 +18,11 @@ const Edit = styled.div`
     gap: 2vw;
 
     img {
-        width: 20px;
-        height: 20px;
+      width: 20px;
+      height: 20px;
     }
     p {
-    font-size: 3vw;
+      font-size: 3vw;
     }
   }
 `;

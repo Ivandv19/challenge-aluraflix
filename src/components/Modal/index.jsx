@@ -15,7 +15,6 @@ const zoomIn = keyframes`
   }
 `;
 
-
 const Formulario = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,7 +27,6 @@ const Formulario = styled.div`
     height: auto;
     gap: 30px;
   }
- 
 `;
 
 const imageUrl = '/img/cross.png';
@@ -44,7 +42,7 @@ const CloseButton = styled.button`
   top: 20px;
   right: 20px;
 
-  @media (max-width: 755px){
+  @media (max-width: 755px) {
     width: 10vw;
   }
 `;
@@ -67,9 +65,7 @@ const ModalWrapper = styled.div`
     width: 100%;
     max-height: 100vh; /* Ajusta la altura máxima del modal */
     overflow-y: auto; /* Habilita el scroll dentro del modal */
-    
   }
-  
 `;
 
 const ModalContent = styled.div`
@@ -91,10 +87,9 @@ const ModalContent = styled.div`
     box-sizing: border-box;
     position: fixed; /* Fija el modal en la pantalla */
     width: 100%;
-     max-height: 100vh; /* Ajusta la altura máxima del modal */
+    max-height: 100vh; /* Ajusta la altura máxima del modal */
     overflow-y: auto; /* Habilita el scroll dentro del modal */
   }
-  
 `;
 
 const FormularioContainer = styled.div`
@@ -143,7 +138,6 @@ const LabelStyled = styled.label`
 `;
 
 const InputStyled = styled.input`
-
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -152,7 +146,6 @@ const InputStyled = styled.input`
   background-color: transparent;
   margin-bottom: 16px;
   font-family: SourceSansProRegular;
-
 
   background: rgba(25, 25, 25, 1);
   border: 3px solid var(--Dark-Grey, rgba(38, 38, 38, 1));
@@ -169,8 +162,6 @@ const InputStyled = styled.input`
   @media (max-width: 599px) {
     font-size: 16px;
   }
-
- 
 `;
 
 const SelectStyled = styled.select`
@@ -183,19 +174,17 @@ const SelectStyled = styled.select`
   margin-bottom: 16px;
   font-family: SourceSansProRegular;
   background: rgba(25, 25, 25, 1);
-  border: 3px solid ${(props) => (props.color)};
+  border: 3px solid ${(props) => props.color};
   color: rgba(165, 165, 165, 1);
 
   option {
     background-color: rgba(25, 25, 25, 1);
     color: rgba(165, 165, 165, 1);
     font-family: SourceSansProRegular;
-    
   }
 
-  &:focus{
+  &:focus {
     outline: none;
-
   }
 
   @media (max-width: 599px) {
@@ -215,7 +204,6 @@ const TextareaStyled = styled.textarea`
   background-color: transparent;
   background: rgba(25, 25, 25, 1);
 
-
   ::placeholder {
     color: #a5a5a5;
     font-size: 20px;
@@ -225,8 +213,8 @@ const TextareaStyled = styled.textarea`
 
   @media (max-width: 600px) {
     width: 100%;
-   height: 20vh;
-   font-size: 16px;
+    height: 20vh;
+    font-size: 16px;
   }
 `;
 
@@ -255,9 +243,8 @@ const ButtonStyled = styled.button`
   font-size: 20px;
   text-align: center;
   cursor: pointer;
-  
 
-  &:hover{
+  &:hover {
     background-color: black;
     box-shadow: 2px 2px 25px 0px rgba(34, 113, 209, 0.9);
     border: 2px solid rgba(34, 113, 209, 0.9);
@@ -267,25 +254,19 @@ const ButtonStyled = styled.button`
     box-sizing: border-box;
     width: 100%;
     font-size: 17px;
-
   }
-  
 `;
-
-
 
 const HeaderStyled = styled.header`
   width: 100%;
   height: auto;
- 
-`
+`;
 
 const categoryColors = {
   'FRONT END': '#6bd1ff', // Azul claro
-  'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
+  'INNOVACIÓN Y GESTIÓN': '#FFBA05', // Amarillo
   'BACK END': '#00C86F', // Verde
 };
-
 
 const Modal = () => {
   // Accedemos al estado global que contiene información sobre el modal, el video a editar, y la función para cerrar el modal y editar el video
@@ -296,7 +277,9 @@ const Modal = () => {
   const [category, setCategory] = useState(videoAEditar.Categoria || '');
   const [image, setImage] = useState(videoAEditar.ImagenURL || '');
   const [video, setVideo] = useState(videoAEditar.VideoURL || '');
-  const [description, setDescription] = useState(videoAEditar.Descripcion || '');
+  const [description, setDescription] = useState(
+    videoAEditar.Descripcion || '',
+  );
 
   // Usamos useEffect para actualizar el estado local cuando cambie el video a editar
   useEffect(() => {
@@ -323,7 +306,7 @@ const Modal = () => {
         Categoria: category,
         ImagenURL: image,
         VideoURL: video,
-        Descripcion: description
+        Descripcion: description,
       };
       // Llamada a la función que actualiza el video en la base de datos
       await editVideo(videoAEditar.id, updatedVideo);
@@ -370,7 +353,9 @@ const Modal = () => {
                   >
                     <option value="FRONT END">Front End</option>
                     <option value="BACK END">Back End</option>
-                    <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestión</option>
+                    <option value="INNOVACIÓN Y GESTIÓN">
+                      Innovación y Gestión
+                    </option>
                   </SelectStyled>
                   {/* Campo para la imagen */}
                   <LabelStyled htmlFor="image">Imagen</LabelStyled>
@@ -404,8 +389,18 @@ const Modal = () => {
                 </SectionStyled>
                 {/* Footer con los botones para guardar o cancelar */}
                 <FooterStyled>
-                  <ButtonStyled type="button" onClick={handleSave} color={color}>GUARDAR</ButtonStyled>
-                  <ButtonStyled type="button" onClick={closeModal} color={color}>
+                  <ButtonStyled
+                    type="button"
+                    onClick={handleSave}
+                    color={color}
+                  >
+                    GUARDAR
+                  </ButtonStyled>
+                  <ButtonStyled
+                    type="button"
+                    onClick={closeModal}
+                    color={color}
+                  >
                     CANCELAR
                   </ButtonStyled>
                 </FooterStyled>

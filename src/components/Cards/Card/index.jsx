@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import BotonDelete from '../BotonDelete';
 import BotonEdit from '../BotonEdit';
@@ -15,23 +15,21 @@ const CardStyled = styled.div`
 `;
 
 const VideoCard = styled.div`
-width: 100%;
-box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
-border-radius: 15px 15px 0px 0px;
-
-img {
   width: 100%;
-  height: auto;
+  box-shadow: ${(props) =>
+    props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent'};
   border-radius: 15px 15px 0px 0px;
-  
-}
 
-@media (max-width: 755px) {
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px 15px 0px 0px;
+  }
+
+  @media (max-width: 755px) {
     width: 100%;
     height: auto;
   }
-
-
 `;
 
 const DeleteyEdit = styled.div`
@@ -41,7 +39,8 @@ const DeleteyEdit = styled.div`
   border-radius: 0px 0px 15px 15px;
   border-style: solid;
   border-color: ${(props) => props.color || '#6bd1ff'};
-  box-shadow: ${(props) => (props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent')};
+  box-shadow: ${(props) =>
+    props.color ? `2px 2px 25px 0px ${props.color}` : 'transparent'};
   background-color: #000000e5;
   justify-content: center;
 
@@ -67,10 +66,9 @@ const DyEContainer = styled.div`
 
 const categoryColors = {
   'FRONT END': '#6bd1ff', // Azul claro
-  'INNOVACIÓN Y GESTIÓN': '#FFBA05',  // Amarillo
+  'INNOVACIÓN Y GESTIÓN': '#FFBA05', // Amarillo
   'BACK END': '#00C86F', // Verde
 };
-
 
 function Card({ src, idVideo, alt, Categoria }) {
   // Se determina el color basado en la categoría del video, o se usa un color predeterminado

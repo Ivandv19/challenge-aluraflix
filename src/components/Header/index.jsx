@@ -1,14 +1,13 @@
-
-import styled from "styled-components";
-import Nav from "./Nav";
-import { useGlobalContext } from "../../contexts/GlobalContext";
-
+import styled from 'styled-components';
+import Nav from './Nav';
+import { useGlobalContext } from '../../contexts/GlobalContext';
 
 // Componente estilizado para el Header
 const HeaderStyled = styled.header`
   width: 100%;
   height: auto;
-  background-color: ${(props) => (props.selected ? 'rgba(38, 38, 38, 1)' : '#000000')};
+  background-color: ${(props) =>
+    props.selected ? 'rgba(38, 38, 38, 1)' : '#000000'};
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -22,23 +21,19 @@ const HeaderStyled = styled.header`
 
   @media (max-width: 599px) {
     top: auto;
-   bottom: 0;
-   border-top: 4px solid var(--Blue, rgba(34, 113, 209, 1));
-   border-bottom: 0;
-   justify-content: center;
-  padding: 0;
-   height: 60px;
-  
+    bottom: 0;
+    border-top: 4px solid var(--Blue, rgba(34, 113, 209, 1));
+    border-bottom: 0;
+    justify-content: center;
+    padding: 0;
+    height: 60px;
   }
 `;
 
 const ImgContainer = styled.div`
-
-
-@media (max-width: 599px){
+  @media (max-width: 599px) {
     display: none;
-}
-
+  }
 `;
 
 const Header = () => {
