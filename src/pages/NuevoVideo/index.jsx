@@ -255,29 +255,92 @@ const DescriptionContainer = styled.div`
   height: auto;
 `;
 
+const ErroresContainer = styled.p`
+  color: red;
+  font-family: 'SourceSansProRegular';
+  font-weight: 400;
+`;
+
+const MensajeExito = styled.p`
+  color: green;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+`;
+
+const MensajeError = styled.p`
+  color: red;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+`;
+
 function NuevoVideo() {
-  // Extrae la función postVideo del contexto global para enviar datos
   const { postVideo } = useGlobalContext();
 
-  // Estados locales para cada uno de los campos del formulario
+  // Estados locales para los campos del formulario
   const [titulo, setTitulo] = useState('');
   const [categoria, setCategoria] = useState('frontend');
   const [imagenURL, setImagenURL] = useState('');
   const [videoURL, setVideoURL] = useState('');
   const [descripcion, setDescripcion] = useState('');
 
+  // Estados para los errores
+  const [errores, setErrores] = useState({
+    titulo: '',
+    imagenURL: '',
+    videoURL: '',
+    descripcion: '',
+  });
+
+  // Estado para los mensajes
+  const [mensajeExito, setMensajeExito] = useState('');
+  const [mensajeError, setMensajeError] = useState(''); // Estado para el mensaje de error
+
+  // Función de validación para URLs
+  const esURLValida = (url) => {
+    const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+    return regex.test(url);
+  };
+
+  // Función para limpiar el error cuando se hace clic en el campo
+  const handleFocus = (campo) => {
+    setErrores((prev) => ({ ...prev, [campo]: '' }));
+  };
+
   // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previene la acción por defecto del formulario
+    e.preventDefault();
 
-    // Validación de campos obligatorios
-    if (!titulo || !imagenURL || !videoURL || !descripcion) {
-      alert('Por favor, completa todos los campos obligatorios.');
+    let erroresEncontrados = {};
+
+    // Verificar que los campos no estén vacíos
+    if (!titulo) erroresEncontrados.titulo = 'El título es obligatorio.';
+    if (!imagenURL)
+      erroresEncontrados.imagenURL = 'La URL de la imagen es obligatoria.';
+    if (!videoURL)
+      erroresEncontrados.videoURL = 'La URL del video es obligatoria.';
+    if (!descripcion)
+      erroresEncontrados.descripcion = 'La descripción es obligatoria.';
+
+    // Validar si las URLs de la imagen y el video son válidas
+    if (imagenURL && !esURLValida(imagenURL)) {
+      erroresEncontrados.imagenURL = 'La URL de la imagen no es válida.';
+    }
+    if (videoURL && !esURLValida(videoURL)) {
+      erroresEncontrados.videoURL = 'La URL del video no es válida.';
+    }
+
+    // Si hay errores, actualizar el estado de los errores
+    if (Object.keys(erroresEncontrados).length > 0) {
+      setErrores(erroresEncontrados);
       return;
     }
 
-    // Objeto que se enviará al servidor
-    const newVideo = {
+    // Si todo es válido, enviamos el formulario
+    const nuevoVideo = {
       Titulo: titulo,
       Categoria: categoria,
       ImagenURL: imagenURL,
@@ -286,8 +349,7 @@ function NuevoVideo() {
     };
 
     try {
-      // Llamada a la función del contexto global para guardar el video
-      await postVideo(newVideo);
+      await postVideo(nuevoVideo);
 
       // Limpiar el formulario después de enviar los datos
       setTitulo('');
@@ -295,14 +357,15 @@ function NuevoVideo() {
       setImagenURL('');
       setVideoURL('');
       setDescripcion('');
-
-      // Mensaje de confirmación
-      alert('El video se ha guardado correctamente.');
+      setErrores({}); // Limpiar errores
+      setMensajeExito('El video se ha guardado correctamente.'); // Mostrar mensaje de éxito
+      setMensajeError(''); // Limpiar el mensaje de error
     } catch (error) {
       console.error('Error al guardar el video:', error);
-      alert(
+      setMensajeExito(''); // Limpiar el mensaje de éxito si hay error
+      setMensajeError(
         'Hubo un error al intentar guardar el video. Por favor, intenta nuevamente.',
-      );
+      ); // Mostrar mensaje de error
     }
   };
 
@@ -312,10 +375,12 @@ function NuevoVideo() {
         <H1>Nuevo video</H1>
         <H2>Complete el formulario para crear una nueva tarjeta de video</H2>
       </TitulosContainer>
+
       <FormContainer onSubmit={handleSubmit}>
         <BlocksStyled>
           <H3>Crear Tarjeta</H3>
         </BlocksStyled>
+
         <GridContainer>
           {/* Sección de Título y Categoría */}
           <DivStyled>
@@ -323,39 +388,51 @@ function NuevoVideo() {
             <InputField
               type="text"
               value={titulo}
-              onChange={(e) => setTitulo(e.target.value)} // Actualiza el estado del título
+              onChange={(e) => setTitulo(e.target.value)}
+              onFocus={() => handleFocus('titulo')}
               placeholder="Ingrese el título del video"
             />
+            {errores.titulo && (
+              <ErroresContainer>{errores.titulo}</ErroresContainer>
+            )}
           </DivStyled>
           <DivStyled>
             <InputLabel>Categoría</InputLabel>
             <SelectField
               value={categoria}
-              onChange={(e) => setCategoria(e.target.value)} // Actualiza el estado de la categoría
+              onChange={(e) => setCategoria(e.target.value)}
             >
               <option value="FRONT END">Frontend</option>
               <option value="BACK END">Backend</option>
-              <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestion</option>
+              <option value="INNOVACIÓN Y GESTIÓN">Innovación y Gestión</option>
             </SelectField>
           </DivStyled>
           {/* Sección de Imagen y Video */}
           <DivStyled>
             <InputLabel>Imagen (URL)</InputLabel>
             <InputField
-              type="url"
+              type="text"
               value={imagenURL}
-              onChange={(e) => setImagenURL(e.target.value)} // Actualiza el estado de la URL de la imagen
+              onChange={(e) => setImagenURL(e.target.value)}
+              onFocus={() => handleFocus('imagenURL')}
               placeholder="Ingrese la URL de la imagen"
             />
+            {errores.imagenURL && (
+              <ErroresContainer>{errores.imagenURL}</ErroresContainer>
+            )}
           </DivStyled>
           <DivStyled>
             <InputLabel>Video (URL)</InputLabel>
             <InputField
-              type="url"
+              type="text"
               value={videoURL}
-              onChange={(e) => setVideoURL(e.target.value)} // Actualiza el estado de la URL del video
+              onChange={(e) => setVideoURL(e.target.value)}
+              onFocus={() => handleFocus('videoURL')}
               placeholder="Ingrese la URL del video"
             />
+            {errores.videoURL && (
+              <ErroresContainer>{errores.videoURL}</ErroresContainer>
+            )}
           </DivStyled>
         </GridContainer>
         <DescriptionContainer>
@@ -364,17 +441,21 @@ function NuevoVideo() {
             <InputLabel>Descripción</InputLabel>
             <TextAreaField
               value={descripcion}
-              onChange={(e) => setDescripcion(e.target.value)} // Actualiza el estado de la descripción
+              onChange={(e) => setDescripcion(e.target.value)}
+              onFocus={() => handleFocus('descripcion')}
               rows={5}
               placeholder="Ingrese una descripción del video"
             />
+            {errores.descripcion && (
+              <ErroresContainer>{errores.descripcion}</ErroresContainer>
+            )}
           </DivStyled>
         </DescriptionContainer>
         <BlocksStyled>
           <ButtonContainer>
             {/* Botón de Guardar */}
             <Button type="submit">Guardar</Button>
-            {/* Botón de Limpiar, que restablece todos los campos */}
+            {/* Botón de Limpiar */}
             <Button
               type="button"
               onClick={() => {
@@ -383,12 +464,19 @@ function NuevoVideo() {
                 setImagenURL('');
                 setVideoURL('');
                 setDescripcion('');
+                setErrores({}); // Limpiar errores
+                setMensajeExito(''); // Limpiar mensaje de éxito
+                setMensajeError(''); // Limpiar mensaje de error
               }}
             >
               Limpiar
             </Button>
           </ButtonContainer>
         </BlocksStyled>
+
+        {/* Mensajes de éxito y error */}
+        {mensajeExito && <MensajeExito>{mensajeExito}</MensajeExito>}
+        {mensajeError && <MensajeError>{mensajeError}</MensajeError>}
       </FormContainer>
     </NuevosVideosContainer>
   );
