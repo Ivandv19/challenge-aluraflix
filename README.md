@@ -1,6 +1,5 @@
 # Alura Flix
 
-[![wakatime](https://wakatime.com/badge/user/c585b1da-c687-4d3b-89c1-72901e86fb52/project/a7b8de70-32ed-4b43-8da6-4db02b498a53.svg)](https://wakatime.com/badge/user/c585b1da-c687-4d3b-89c1-72901e86fb52/project/a7b8de70-32ed-4b43-8da6-4db02b498a53)
 [![wakatime](https://wakatime.com/badge/github/Ivandv19/challenge-aluraflix.svg)](https://wakatime.com/badge/github/Ivandv19/challenge-aluraflix)
 
 ## Descripción
