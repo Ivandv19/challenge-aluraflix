@@ -1,5 +1,7 @@
 # Alura Flix
 
+[![wakatime](https://wakatime.com/badge/user/c585b1da-c687-4d3b-89c1-72901e86fb52/project/a7b8de70-32ed-4b43-8da6-4db02b498a53.svg)](https://wakatime.com/badge/user/c585b1da-c687-4d3b-89c1-72901e86fb52/project/a7b8de70-32ed-4b43-8da6-4db02b498a53)
+
 ## Descripción
 
 Aluraflix es una aplicación web diseñada para gestionar y explorar una colección de videos. La aplicación permite a los usuarios visualizar videos filtrados por categoría, eliminar y editar videos, y crear nuevos videos mediante un formulario.
