@@ -9,24 +9,23 @@ export const GlobalProvider = ({ children }) => {
   // Estado para almacenar la lista de videos
   const [videos, setVideos] = useState([]);
 
-  // Función para obtener la lista de videos desde el servidor
-  const fetchVideos = async () => {
-    try {
-      const response = await fetch(
-        'https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos',
-      );
-      if (!response.ok) {
-        throw new Error('Error al obtener los videos');
-      }
-      const data = await response.json();
-      setVideos(data);
-    } catch (error) {
-      console.error('Error fetching videos:', error);
-    }
-  };
-
-  // Efecto para cargar los videos al cargar el componente
   useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch(
+          'https://my-json-server.typicode.com/IvandevI9/api-aluraflix/Videos',
+        );
+        if (!response.ok) {
+          throw new Error(
+            `error al obtener respuesta de la API ${response.status}`,
+          );
+        }
+        const data = await response.json();
+        setVideos(data);
+      } catch (error) {
+        console.log('Error al obtener los datos:', error);
+      }
+    };
     fetchVideos();
   }, []);
 
@@ -67,7 +66,7 @@ export const GlobalProvider = ({ children }) => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] =
     useState('FRONT END');
   // Función para seleccionar la categoría
-  const seleccionarCategoria = async (Categoria) => {
+  const seleccionarCategoria = (Categoria) => {
     setCategoriaSeleccionada(Categoria);
     console.log('Categoría seleccionada:', Categoria);
   };
@@ -154,7 +153,7 @@ export const GlobalProvider = ({ children }) => {
   const [videoSeleccionado, setVideoSeleccionado] = useState(null);
   const [videoAEditar, setVideoAEditar] = useState({});
 
-  const handleVideoSelec = async (id) => {
+  const handleVideoSelec = (id) => {
     setVideoSeleccionado(id);
   };
 
